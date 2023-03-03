@@ -3,6 +3,7 @@ package com.ddip.server.user.service;
 import com.ddip.server.user.domain.SignupConfirmation;
 import com.ddip.server.user.domain.Users;
 import com.ddip.server.user.dto.external.ToMail;
+import com.ddip.server.user.dto.request.Confirm;
 import com.ddip.server.user.dto.request.Signup;
 import com.ddip.server.user.repository.SignupConfirmationRepository;
 import com.ddip.server.user.repository.UserRepository;
@@ -35,6 +36,16 @@ public class AuthService {
 
         mailSender.setToMail(ToMail.builder().address(signup.getEmail()).title(MAIL_TITLE).build());
         mailSender.send(signupConfirmation.getKey());
+    }
+
+    public void confirm(Confirm confirm) {
+        if (!signupConfirmationRepository.findOneByEmail(confirm.getEmail()).orElseThrow()
+                .equals(confirm.toSignupConfirmation())) {
+            throw new RuntimeException("인증번호가 틀렸습니다");
+        }
+        Users user = userRepository.findByEmail(confirm.getEmail())
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 email 입니다."));
+        user.confirm();
     }
 
     private void validateSignup(Signup signup) throws RuntimeException {

@@ -43,4 +43,8 @@ public class Users {
         this.password = password;
         this.isConfirm = isConfirm;
     }
+
+    public void confirm(){
+        this.isConfirm = true;
+    }
 }
