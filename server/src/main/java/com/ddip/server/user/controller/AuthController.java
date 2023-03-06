@@ -1,10 +1,12 @@
 package com.ddip.server.user.controller;
 
+import com.ddip.server.user.dto.request.Confirm;
 import com.ddip.server.user.dto.request.Signup;
 import com.ddip.server.user.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +22,9 @@ public class AuthController {
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid Signup signup) {
         authService.signup(signup);
+    }
+    @PatchMapping("/confirm")
+    public void confirm(@RequestBody @Valid Confirm confirm) {
+        authService.confirm(confirm);
     }
 }
