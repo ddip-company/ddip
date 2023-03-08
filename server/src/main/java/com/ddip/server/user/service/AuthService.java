@@ -4,7 +4,9 @@ import com.ddip.server.user.domain.SignupConfirmation;
 import com.ddip.server.user.domain.Users;
 import com.ddip.server.user.dto.external.ToMail;
 import com.ddip.server.user.dto.request.Confirm;
+import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.request.Signup;
+import com.ddip.server.user.dto.response.LoginUser;
 import com.ddip.server.user.repository.SignupConfirmationRepository;
 import com.ddip.server.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +48,16 @@ public class AuthService {
         Users user = userRepository.findByEmail(confirm.getEmail())
                 .orElseThrow(() -> new RuntimeException("존재하지 않는 email 입니다."));
         user.confirm();
+    }
+
+    public LoginUser login(Login login) {
+        Users users = userRepository.findByEmail(login.getEmail())
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 이메일 입니다."));
+        if (!users.isAvailableLogin(login)) {
+            throw new RuntimeException("이메일과 비밀번호가 맞지 않거나 아직 가입인증을 하지 않았습니다.");
+        }
+
+        return users.toLoginUser();
     }
 
     private void validateSignup(Signup signup) throws RuntimeException {

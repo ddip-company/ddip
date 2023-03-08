@@ -1,5 +1,9 @@
 package com.ddip.server.user.domain;
 
+import static com.ddip.server.user.service.JwtService.buildJwt;
+
+import com.ddip.server.user.dto.request.Login;
+import com.ddip.server.user.dto.response.LoginUser;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -44,7 +48,15 @@ public class Users {
         this.isConfirm = isConfirm;
     }
 
-    public void confirm(){
+    public void confirm() {
         this.isConfirm = true;
+    }
+
+    public boolean isAvailableLogin(Login login) {
+        return password.equals(login.getPassword()) && email.equals(login.getEmail()) && isConfirm;
+    }
+
+    public LoginUser toLoginUser() {
+        return LoginUser.builder().email(email).nickname(nickname).jwt(buildJwt(email)).build();
     }
 }
