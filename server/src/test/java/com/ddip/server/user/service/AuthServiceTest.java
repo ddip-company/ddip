@@ -6,7 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.ddip.server.user.domain.SignupConfirmation;
 import com.ddip.server.user.domain.Users;
 import com.ddip.server.user.dto.request.Confirm;
+import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.request.Signup;
+import com.ddip.server.user.dto.response.LoginUser;
 import com.ddip.server.user.repository.SignupConfirmationRepository;
 import com.ddip.server.user.repository.UserRepository;
 import java.util.Optional;
@@ -34,10 +36,11 @@ class AuthServiceTest {
 
     private final String existEmail = "test@test.com";
     private final String existNickname = "testNickname";
+    private final String existPassword = "1234";
 
     @BeforeEach
     void setUp() {
-        userRepository.save(Users.builder().email(existEmail).nickname(existNickname).password("1234").build());
+        userRepository.save(Users.builder().email(existEmail).nickname(existNickname).password(existPassword).build());
     }
 
     @AfterEach
@@ -102,4 +105,37 @@ class AuthServiceTest {
         assertThatThrownBy(() -> authService.confirm(confirm)).isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    @DisplayName("로그인 성공")
+    void test6() {
+        // given 회원이 존재하고
+        // when 이메일과 패스워드로 로그인 시도
+        Login login = Login.builder().email(existEmail).password(existPassword).build();
+        LoginUser loginUser = authService.login(login);
+        // then 로그인 성공
+        assertThat(loginUser).isEqualTo(
+                LoginUser.builder().email(existEmail).nickname(existNickname).jwt(null).build());
+    }
+
+    @Test
+    @DisplayName("잘못된 이메일로 로그인 실패")
+    void test7() {
+        // given 회원이 존재하고
+
+        Login login = Login.builder().email("notExistEmail").password(existPassword).build();
+        // when 잘못된 이메일로 로그인 시도
+        // then 로그인 실패
+        assertThatThrownBy(() -> authService.login(login)).isInstanceOf(RuntimeException.class);
+
+    }
+
+    @Test
+    @DisplayName("잘못된 비밀번호로 로그인 실패")
+    void test8() {
+        // given 회원이 존재하고
+        Login login = Login.builder().email(existEmail).password("notExistPassword").build();
+        // when 잘못된 비밀번호로 로그인 시도
+        // then 로그인 실패
+        assertThatThrownBy(() -> authService.login(login)).isInstanceOf(RuntimeException.class);
+    }
 }

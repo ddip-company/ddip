@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.request.Signup;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
@@ -62,5 +63,23 @@ class AuthControllerTest {
                 );
         // when 회원 가입 시도가 성공하면
         // then 회원의 인증 번호가 생긴다
+    }
+
+    @Test
+    @DisplayName("로그인 성공")
+    void test2() throws Exception {
+
+        Login request = Login.builder().email("email").password("1234").build();
+        mockMvc.perform(post("/auth/login")
+                        .content(objectMapper.writeValueAsString(request))
+                        .contentType(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andDo(document("login",
+                        requestFields(
+                                fieldWithPath("email").type(JsonFieldType.STRING).description("email"),
+                                fieldWithPath("password").type(JsonFieldType.STRING).description("비밀번호")
+                        ))
+                );
     }
 }
