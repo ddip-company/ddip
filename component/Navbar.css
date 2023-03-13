@@ -1,0 +1,25 @@
+.Navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.NavLink {
+    white-space: nowrap;
+    padding: 8px;
+    text-decoration: none;
+    color: RtyBlack;
+}
+
+.NavLink span {
+    height: 90%;
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+.NavLink span:hover {
+    color: RtyOrange;
+    font-size: 1.4rem;
+}
