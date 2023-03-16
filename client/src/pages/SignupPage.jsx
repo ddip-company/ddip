@@ -19,7 +19,7 @@ const SignUp = () => {
       .min(2, "닉네임은 최소 2글자 이상입니다!")
       .max(10, "닉네임은 최대 10글자입니다!")
       .matches(
-        /^[가-힣a-zA-Z][^!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
+        /^[가-힣a-zA-Z][^!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?\s]*$/,
         "닉네임에 특수문자가 포함되면 안되고 숫자로 시작하면 안됩니다!"
       ),
     password: yup
@@ -111,15 +111,17 @@ const SignUp = () => {
           />
           {errors.email && <p>{errors.email.message}</p>}
           {authNumberIsOpen && (
-            <input
-              name="authNumber"
-              placeholder="인증번호"
-              {...register("authNumber")}
-            />
+            <div>
+              <input
+                name="authNumber"
+                placeholder="인증번호"
+                {...register("authNumber")}
+              />
+              <button onClick={handleSubmit(handleSubmitAuthNumber)}>
+                인증확인
+              </button>
+            </div>
           )}
-          <button onClick={handleSubmit(handleSubmitAuthNumber)}>
-            Email 인증
-          </button>
           <label htmlFor="name_id">Nick Name</label>
           <input
             type="text"
@@ -149,7 +151,7 @@ const SignUp = () => {
           {errors.passwordConfirm && <p>{errors.passwordConfirm.message}</p>}
           <br />
           <button onClick={handleSubmit(onSubmit)} type="submit">
-            회원가입
+            가입하기
           </button>
         </form>
       </div>
