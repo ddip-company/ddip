@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../store/auth-context";
 
 const LoginPage = () => {
+  const authCtx = useContext(AuthContext);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const formSchema = yup.object({
@@ -16,6 +17,7 @@ const LoginPage = () => {
       .email("이메일 형식이 아닙니다."),
     password: yup.string()
   });
+
   const {
     register,
     handleSubmit,
@@ -26,28 +28,19 @@ const LoginPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const { email, password } = data;
-    axios({
-      method: "post",
-      url: "/auth/login",
-      data: {
-        email,
-        password
-      }
-    })
-      .then((res) => {
-        localStorage.setItem("token", res.data.jwt);
-        const expiration = new Date();
-        expiration.setHours(expiration.getHours() + 1);
-        localStorage.setItem("expiration", expiration.toISOString());
-      })
-      .then(() => {
+
+    const tryCatch = {
+      try() {
         navigate("/");
-      })
-      .catch((error) => {
+      },
+      catch() {
         setError("이메일 또는 비밀번호를 잘못 입력하셨습니다.");
-      });
+      }
+    };
+
+    authCtx.loginHandler(email, password, tryCatch);
   };
 
   return (
@@ -86,7 +79,7 @@ const LoginPage = () => {
             로그인
           </button>
           <br />
-          <Link to="/signUp" type="submit">
+          <Link to="/signup" type="submit">
             회원가입
           </Link>
         </form>
