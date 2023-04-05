@@ -10,7 +10,7 @@
     white-space: nowrap;
     padding: 8px;
     text-decoration: none;
-    color: RtyBlack;
+    color: black;
 }
 
 .NavLink span {
@@ -20,6 +20,6 @@
 }
 
 .NavLink span:hover {
-    color: RtyOrange;
+    color: gray;
     font-size: 1.4rem;
 }
