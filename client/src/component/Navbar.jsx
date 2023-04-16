@@ -8,7 +8,7 @@ import { AuthContext } from "../store/auth-context";
 
 const Navbar = () => {
   const { isLoggined, userInfo } = useContext(AuthContext);
-  console.log(isLoggined);
+
   return (
     <div className="Navbar">
       <Link className="NavLink" to="/">

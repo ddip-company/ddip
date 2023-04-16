@@ -3,7 +3,7 @@ import Navbar from "../component/Navbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import * as formSchema from "../util/authValidation";
+import { formSchema } from "../util/authValidation";
 import * as authApi from "../api/auth";
 
 const SignUp = () => {
@@ -18,6 +18,7 @@ const SignUp = () => {
     mode: "onChange",
     resolver: yupResolver(formSchema)
   });
+  console.log(formSchema);
 
   const onSubmit = (data) => {
     console.log(data);

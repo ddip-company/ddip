@@ -1,22 +1,15 @@
 import Navbar from "../component/Navbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../store/auth-context";
+import { loginFormSchema } from "../util/authValidation";
 
 const LoginPage = () => {
   const authCtx = useContext(AuthContext);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const formSchema = yup.object({
-    email: yup
-      .string()
-      .required("이메일을 입력해주세요")
-      .email("이메일 형식이 아닙니다."),
-    password: yup.string()
-  });
 
   const {
     register,
@@ -24,12 +17,12 @@ const LoginPage = () => {
     formState: { errors }
   } = useForm({
     mode: "onChange",
-    resolver: yupResolver(formSchema)
+    resolver: yupResolver(loginFormSchema)
   });
 
   const onSubmit = (data) => {
-    // console.log(data);
     const { email, password } = data;
+    // console.log(data);
 
     const tryCatch = {
       try() {
