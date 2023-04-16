@@ -1,9 +1,11 @@
 package com.ddip.server.user.domain;
 
 import static com.ddip.server.user.service.JwtService.buildJwt;
+import static com.ddip.server.user.service.JwtService.getEmailFromJwt;
 
 import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.response.LoginUser;
+import com.ddip.server.user.dto.response.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -58,5 +60,15 @@ public class Users {
 
     public LoginUser toLoginUser() {
         return LoginUser.builder().email(email).nickname(nickname).jwt(buildJwt(email)).build();
+    }
+
+    public User toUser() {
+        return User.builder().email(email).nickname(nickname).build();
+    }
+
+    public void withdraw(String password) {
+        if (!this.password.equals(password)) {
+            throw new RuntimeException("비밀번호가 틀렸습니다.");
+        }
     }
 }

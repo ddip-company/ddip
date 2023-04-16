@@ -31,4 +31,9 @@ public class JwtService {
                         Date.from(LocalDate.now().plusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .compact();
     }
+
+    public static String getEmailFromJwt(String jwt) {
+        SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtKey));
+        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody().getSubject();
+    }
 }
