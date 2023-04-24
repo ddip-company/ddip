@@ -1,11 +1,15 @@
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../component/Navbar";
 
 function Mypage() {
   const { userInfo } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <>
+      <Navbar />
       <h1>프로필</h1>
       <div>
         <p>
@@ -14,6 +18,9 @@ function Mypage() {
         <p>
           <strong>[ nickname ]</strong> {userInfo.nickname}
         </p>
+      </div>
+      <div>
+        <button onClick={() => navigate("/withdraw")}>회원 탈퇴</button>
       </div>
     </>
   );

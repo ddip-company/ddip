@@ -56,6 +56,17 @@ const AuthProvider = (props) => {
     }
   }, []);
 
+  const withDrawHandler = async (email, password, tryCatch) => {
+    try {
+      await authApi.withdraw(email, password);
+      logoutHandler();
+      tryCatch.try();
+    } catch (error) {
+      tryCatch.catch();
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     if (!token || !duration) {
       return;
@@ -73,7 +84,8 @@ const AuthProvider = (props) => {
         isLoggined,
         userInfo,
         loginHandler,
-        logoutHandler
+        logoutHandler,
+        withDrawHandler
       }}
     >
       {props.children}

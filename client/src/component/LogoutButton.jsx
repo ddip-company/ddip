@@ -10,7 +10,13 @@ function LogoutButton() {
     return navigate("/");
   };
 
-  return <button onClick={logout}>Logout</button>;
+  return (
+    <div className="NavLink">
+      <span className="NavLink span" onClick={logout}>
+        로그아웃
+      </span>
+    </div>
+  );
 }
 
 export default LogoutButton;

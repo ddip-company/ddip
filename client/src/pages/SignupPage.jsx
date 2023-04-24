@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,37 +9,66 @@ import * as authApi from "../api/auth";
 const SignUp = () => {
   const [authNumberIsOpen, setAuthNumberIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [고유한닉네임, set고유한닉네임] = useState(null);
+  const [닉네임확인메세지, set닉네임확인메세지] = useState(null);
+  const nicknameCheckMsg = 고유한닉네임 !== null;
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors }
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(formSchema)
   });
-  console.log(formSchema);
+  // console.log(watch("nickname"));
+  const nicknameValue = watch("nickname");
 
-  const onSubmit = (data) => {
-    console.log(data);
-    const { email, nickname, password } = data;
+  useEffect(() => {
+    set고유한닉네임(null);
+  }, [nicknameValue]);
+
+  useEffect(() => {
+    if (고유한닉네임 === true) {
+      set닉네임확인메세지("사용가능한 닉네임입니다.");
+    } else if (고유한닉네임 === false) {
+      set닉네임확인메세지("이미 존재하는 닉네임입니다.");
+    } else {
+      set닉네임확인메세지(null);
+    }
+  }, [고유한닉네임]);
+
+  const duplicationHandler = () => {
     authApi
-      .signup(email, nickname, password)
+      .nicknameDuplication(nicknameValue)
       .then((res) => {
         if (res.status === 200) {
-          setAuthNumberIsOpen(true);
+          set고유한닉네임(false);
         }
-
-        console.log(res);
       })
       .catch((error) => {
-        console.log(error);
+        set고유한닉네임(true);
       });
+  };
+
+  const onSubmit = async (data) => {
+    console.log(data);
+
+    const { email, nickname, password } = data;
+    try {
+      const res = await authApi.signup(email, nickname, password);
+      if (res.status === 200) {
+        setAuthNumberIsOpen(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmitAuthNumber = (data) => {
     const { email, authNumber } = data;
-    console.log(data);
+    // console.log(data);
     authApi.confirmAuthNumber(email, authNumber).then((res) => {
       if (res.status === 200) navigate("/login");
 
@@ -60,7 +89,12 @@ const SignUp = () => {
           height: "100vh"
         }}
       >
-        <form style={{ display: "flex", flexDirection: "column" }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <h1>회원가입</h1>
           <label htmlFor="email_id">E-Mail</label>
           <input
@@ -91,6 +125,8 @@ const SignUp = () => {
             {...register("nickname")}
           />
           {errors.nickname && <p>{errors.nickname.message}</p>}
+          <button onClick={duplicationHandler}>중복</button>
+          {nicknameCheckMsg && <p>{닉네임확인메세지}</p>}
           <label htmlFor="password_id">Password</label>
           <input
             type="password"
