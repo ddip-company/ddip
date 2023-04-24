@@ -6,5 +6,5 @@ export const AuthContext = createContext({
   userInfo: { email: "", nickname: "" },
   loginHandler: () => {},
   logoutHandler: () => {},
-  withDrawHandler: () => {}
+  withdrawHandler: () => {}
 });

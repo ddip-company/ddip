@@ -56,7 +56,7 @@ const AuthProvider = (props) => {
     }
   }, []);
 
-  const withDrawHandler = async (email, password, tryCatch) => {
+  const withdrawHandler = async (email, password, tryCatch) => {
     try {
       await authApi.withdraw(email, password);
       logoutHandler();
@@ -85,7 +85,7 @@ const AuthProvider = (props) => {
         userInfo,
         loginHandler,
         logoutHandler,
-        withDrawHandler
+        withdrawHandler
       }}
     >
       {props.children}
