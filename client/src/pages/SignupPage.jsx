@@ -7,7 +7,7 @@ import { formSchema } from "../util/authValidation";
 import * as authApi from "../api/auth";
 
 const SignUp = () => {
-  const [authNumberIsOpen, setAuthNumberIsOpen] = useState(false);
+  // const [authNumberIsOpen, setAuthNumberIsOpen] = useState(false);
   const navigate = useNavigate();
   const [고유한닉네임, set고유한닉네임] = useState(null);
   const [닉네임확인메세지, set닉네임확인메세지] = useState(null);
@@ -24,6 +24,7 @@ const SignUp = () => {
   });
   // console.log(watch("nickname"));
   const nicknameValue = watch("nickname");
+  const emailValue = watch("email");
 
   useEffect(() => {
     set고유한닉네임(null);
@@ -59,22 +60,27 @@ const SignUp = () => {
     try {
       const res = await authApi.signup(email, nickname, password);
       if (res.status === 200) {
-        setAuthNumberIsOpen(true);
+        // setAuthNumberIsOpen(true);
+        navigate("/email-auth", { state: emailValue });
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmitAuthNumber = (data) => {
-    const { email, authNumber } = data;
-    // console.log(data);
-    authApi.confirmAuthNumber(email, authNumber).then((res) => {
-      if (res.status === 200) navigate("/login");
+  // const handleSubmitAuthNumber = async (data) => {
+  //   const { email, authNumber } = data;
+  //   // console.log(data);
+  //   try {
+  //     const res = await authApi.confirmAuthNumber(email, authNumber);
 
-      console.log(res);
-    });
-  };
+  //     if (res.status === 200) navigate("/login");
+
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -104,7 +110,7 @@ const SignUp = () => {
             {...register("email")}
           />
           {errors.email && <p>{errors.email.message}</p>}
-          {authNumberIsOpen && (
+          {/* {authNumberIsOpen && (
             <div>
               <input
                 name="authNumber"
@@ -115,7 +121,7 @@ const SignUp = () => {
                 인증확인
               </button>
             </div>
-          )}
+          )} */}
           <label htmlFor="name_id">Nick Name</label>
           <input
             type="text"
