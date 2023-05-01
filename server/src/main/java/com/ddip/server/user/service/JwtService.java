@@ -7,33 +7,30 @@ import java.time.ZoneId;
 import java.util.Base64;
 import java.util.Date;
 import javax.crypto.SecretKey;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtService {
-    private static String jwtKey;
 
-    @Value("${jwt.key}")
-    public void setJwtKey(String value) {
-        jwtKey = value;
-    }
+  private static String jwtKey = "rTPmA9Sgk+Q1XwuJbG7E6xFFUhQpdi+al5iyPnRTK/Q=";
 
-    public static String buildJwt(String email) {
+  public static String buildJwt(Long id) {
 
-        SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtKey));
+    SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtKey));
 
-        return Jwts.builder()
-                .setSubject(email)
-                .signWith(key)
-                .setIssuedAt(new Date())
-                .setExpiration(
-                        Date.from(LocalDate.now().plusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .compact();
-    }
+    return Jwts.builder()
+        .setSubject(Long.toString(id))
+        .signWith(key)
+        .setIssuedAt(new Date())
+        .setExpiration(
+            Date.from(
+                LocalDate.now().plusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+        .compact();
+  }
 
-    public static String getEmailFromJwt(String jwt) {
-        SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtKey));
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody().getSubject();
-    }
+  public static String getEmailFromJwt(String jwt) {
+    SecretKey key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtKey));
+    return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody()
+        .getSubject();
+  }
 }
