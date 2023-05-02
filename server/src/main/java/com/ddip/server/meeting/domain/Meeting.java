@@ -1,5 +1,6 @@
 package com.ddip.server.meeting.domain;
 
+import com.ddip.server.meeting.dto.response.MeetingResponse;
 import com.ddip.server.user.domain.Users;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -55,5 +56,17 @@ public class Meeting {
     this.location = location;
     this.meetingAt = meetingAt;
     this.numberOfPeople = numberOfPeople;
+  }
+
+  public MeetingResponse toMeetingResponse() {
+    return MeetingResponse.builder()
+        .id(id)
+        .owner(owner.toUser())
+        .title(title)
+        .description(description)
+        .location(location.toResponse())
+        .meetingAt(meetingAt)
+        .numberOfPeople(numberOfPeople)
+        .build();
   }
 }
