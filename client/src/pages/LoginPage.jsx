@@ -22,7 +22,6 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     const { email, password } = data;
-    // console.log(data);
 
     const tryCatch = {
       try() {

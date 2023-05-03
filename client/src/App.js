@@ -6,7 +6,6 @@ import MyPage from "./pages/MyPage";
 import SignUp from "./pages/SignupPage";
 import VerificationPage from "./pages/VerificationPage";
 import Withdraw from "./pages/Withdraw";
-// import React from 'react';
 
 function App() {
   return (
