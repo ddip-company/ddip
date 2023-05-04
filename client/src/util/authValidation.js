@@ -24,8 +24,7 @@ export const formSchema = yup.object({
     ),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref("password")], "비밀번호가 다릅니다."),
-  authNumber: yup.string().min(5, "인증번호는 최소 5글자 이상입니다!")
+    .oneOf([yup.ref("password")], "비밀번호가 다릅니다.")
 });
 
 export const loginFormSchema = yup.object({
@@ -35,4 +34,8 @@ export const loginFormSchema = yup.object({
     .email("이메일 형식이 아닙니다."),
 
   password: yup.string()
+});
+
+export const emailFormSchema = yup.object({
+  authNumber: yup.string().min(5, "인증번호는 최소 5글자 이상입니다!")
 });

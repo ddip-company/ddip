@@ -4,7 +4,8 @@ import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
 import SignUp from "./pages/SignupPage";
-// import React from 'react';
+import VerificationPage from "./pages/VerificationPage";
+import Withdraw from "./pages/Withdraw";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/mypage/:nickname" element={<MyPage />}></Route>
+        <Route path="/withdraw" element={<Withdraw />}></Route>
+        <Route path="/email-auth" element={<VerificationPage />}></Route>
       </Routes>
     </div>
   );

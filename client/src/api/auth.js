@@ -11,3 +11,11 @@ export const confirmAuthNumber = (email, authNumber) => {
 export const login = (email, password) => {
   return http.post("/auth/login", { email, password });
 };
+
+export const nicknameDuplication = (nickname) => {
+  return http.get(`/auth/users?nickname=${nickname}`);
+};
+
+export const withdraw = (email, password) => {
+  return http.delete("/auth/withdraw", { data: { email, password } });
+};
