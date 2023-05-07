@@ -2,6 +2,7 @@ package com.ddip.server.meeting.domain;
 
 import com.ddip.server.meeting.dto.response.MeetingResponse;
 import com.ddip.server.user.domain.Users;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -25,9 +26,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Meeting {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "owner_id")
   private Users owner;
   @Column

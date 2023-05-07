@@ -3,6 +3,7 @@ package com.ddip.server.meeting.service;
 import com.ddip.server.config.UserSession;
 import com.ddip.server.meeting.domain.Meeting;
 import com.ddip.server.meeting.dto.request.CreateMeeting;
+import com.ddip.server.meeting.dto.request.SearchMeeting;
 import com.ddip.server.meeting.dto.response.MeetingResponse;
 import com.ddip.server.meeting.repository.MeetingRepository;
 import com.ddip.server.user.domain.Users;
@@ -28,9 +29,13 @@ public class MeetingService {
     meetingRepository.save(request.toMeeting(owner));
   }
 
-  @Transactional
   public List<MeetingResponse> getMeetings() {
     List<Meeting> meetings = meetingRepository.findAll();
+    return meetings.stream().map(Meeting::toMeetingResponse).collect(Collectors.toList());
+  }
+
+  public List<MeetingResponse> searchMeetings(SearchMeeting searchMeeting) {
+    List<Meeting> meetings = meetingRepository.search(searchMeeting);
     return meetings.stream().map(Meeting::toMeetingResponse).collect(Collectors.toList());
   }
 }
