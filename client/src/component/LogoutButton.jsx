@@ -11,10 +11,8 @@ function LogoutButton() {
   };
 
   return (
-    <div className="NavLink">
-      <span className="NavLink span" onClick={logout}>
-        로그아웃
-      </span>
+    <div className="nav-btn-text" onClick={logout}>
+      로그아웃
     </div>
   );
 }

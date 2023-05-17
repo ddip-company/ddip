@@ -1,3 +1,5 @@
+@use "../styles/base/common";
+
 .nav-container {
   width: 100%;
   height: 77px;
@@ -18,23 +20,26 @@
   height: 35px;
   box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  border: 0px solid rgba(0, 0, 0, 0);
+  border: 0px solid #0000;
   display: flex;
   align-items: center;
   margin-left: 80px;
-}
-.nav-searchBar .searchImg {
-  width: 18px;
-  height: 18px;
-  margin-left: 15px;
-}
-.nav-searchBar .nav-input {
-  width: 482px;
-  height: 24px;
-  border: 0px solid rgba(0, 0, 0, 0);
-  font-family: "Pretendard-300";
-  font-size: 15px;
-  margin-left: 15px;
+  //   flex-grow: 1;
+
+  .searchImg {
+    width: 18px;
+    height: 18px;
+    margin-left: 15px;
+  }
+
+  .nav-input {
+    width: 482px;
+    height: 24px;
+    border: 0px solid #0000;
+    font-family: "Pretendard-300";
+    font-size: 15px;
+    margin-left: 15px;
+  }
 }
 
 .nav-containerRight {
@@ -50,4 +55,4 @@
   font-size: 15px;
   margin-left: 50px;
   cursor: pointer;
-}/*# sourceMappingURL=Navbar.css.map */
+}
