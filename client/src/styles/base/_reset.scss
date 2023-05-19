@@ -1,12 +1,11 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-body {
-  position: relative;
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 html,
@@ -96,8 +95,6 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  text-decoration: none;
-  color: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -134,4 +131,16 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  font-family: "Noto Sans KR", sans-serif;
+  background: transparent;
+  cursor: pointer;
+}
+textarea {
+  font-family: "Noto Sans KR", sans-serif;
 }

@@ -8,16 +8,18 @@
 }
 
 .nav-containerLeft {
-  padding-left: 150px;
   display: flex;
   align-items: center;
+  height: 35px;
+  padding-left: 150px;
 }
 
 .nav-searchBar {
-  width: 482px;
-  height: 35px;
+  width: 382px;
+  height: 100%;
   box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border: 0px solid rgba(0, 0, 0, 0);
   display: flex;
   align-items: center;
@@ -37,7 +39,48 @@
   margin-left: 15px;
 }
 
+.nav-local {
+  width: 90px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 0px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.nav-local .mapImg {
+  width: 20px;
+  height: 18px;
+  margin-left: 15px;
+}
+.nav-local .local {
+  font-family: "Pretendard-300";
+  font-size: 15px;
+  margin-left: 10px;
+  color: #8a8a8a;
+}
+
+.local-selected {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.local-selected .selected {
+  color: black;
+  font-family: "pretendard-300";
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .nav-containerRight {
+  display: flex;
+  align-items: center;
+  height: 35px;
   padding-right: 150px;
 }
 
@@ -47,7 +90,86 @@
 
 .nav-btn-text {
   font-family: "Pretendard-600";
-  font-size: 15px;
+  font-size: 1rem;
   margin-left: 50px;
   cursor: pointer;
+}
+
+.localList-header {
+  margin-bottom: 15px;
+  font-family: "Pretendard-600";
+  color: #0b2447;
+}
+
+.localList-wrapper {
+  display: flex;
+  font-family: "Pretendard-400";
+}
+.localList-wrapper .list-title {
+  text-align: left;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  color: #19376d;
+}
+
+.sido-list {
+  width: 160px;
+  height: 140px;
+  overflow-y: scroll;
+  border: 1px solid #19376d;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sido-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sido-list::-webkit-scrollbar-thumb {
+  background-color: #19376d;
+  border-radius: 10px;
+}
+
+.sido-list::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.sigugun-list {
+  width: 160px;
+  height: 140px;
+  overflow-y: scroll;
+  border: 1px solid #19376d;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-left: 0px;
+  border-radius: 5px;
+}
+
+.sigugun-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sigugun-list::-webkit-scrollbar-thumb {
+  background-color: #19376d;
+  border-radius: 10px;
+}
+
+.sigugun-list::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.list-li {
+  padding: 8px 20px;
+}
+
+.list-li.active {
+  color: #19376d;
+  font-family: "Pretendard-600";
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
 }/*# sourceMappingURL=Navbar.css.map */

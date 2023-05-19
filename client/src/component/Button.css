@@ -1,0 +1,20 @@
+.Button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  font-family: "pretendard-400";
+}
+
+.blue {
+  background: #19376d;
+  color: white;
+}
+
+.gray {
+  background: #8a8a8a;
+  color: white;
+}
+
+.full-width {
+  width: 100%;
+}/*# sourceMappingURL=Button.css.map */
