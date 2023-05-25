@@ -1,0 +1,32 @@
+.verification-container {
+  max-width: 1240px;
+  padding: 40px 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.verification-form {
+  width: 500px;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  padding: 50px;
+  border-radius: 5px;
+}
+
+.verification-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  font-family: "pretendard-600";
+  color: #19376d;
+  font-size: 1.5rem;
+}
+
+.verification-errors {
+  margin-top: 2px;
+  margin-bottom: 22px;
+  font-family: "pretendard-400";
+  color: #ff5934;
+}/*# sourceMappingURL=VerificationPage.css.map */
