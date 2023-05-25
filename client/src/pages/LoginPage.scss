@@ -1,0 +1,28 @@
+@use "../styles/base/common";
+
+.login-container {
+  @extend %auth-container;
+}
+
+.login-form {
+  @extend %auth-form;
+}
+
+.login-title {
+  @extend %auth-title;
+}
+
+.login-label {
+  @extend %auth-label;
+}
+
+.login-errors {
+  @extend %auth-errors;
+}
+
+.signup-button {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  font-family: "pretendard-400";
+}

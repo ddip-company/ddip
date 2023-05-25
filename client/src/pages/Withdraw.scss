@@ -1,0 +1,21 @@
+@use "../styles/base/common";
+
+.withdraw-container {
+  @extend %auth-container;
+}
+
+.withdraw-form {
+  @extend %auth-form;
+}
+
+.withdraw-title {
+  @extend %auth-title;
+}
+
+.withdraw-label {
+  @extend %auth-label;
+}
+
+.withdraw-errors {
+  @extend %auth-errors;
+}

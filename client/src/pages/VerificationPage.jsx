@@ -3,6 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { emailFormSchema } from "../util/authValidation";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as authApi from "../api/auth";
+import "../component/Input.css";
+import Button from "../component/Button";
+import "./VerificationPage.css";
 
 function VerificationPage() {
   const navigate = useNavigate();
@@ -32,24 +35,25 @@ function VerificationPage() {
     }
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh"
-      }}
-    >
-      <form style={{ display: "flex", flexDirection: "column" }}>
-        <h1>E-mail 인증</h1>
+    <div className="verification-container">
+      <form className="verification-form">
+        <h1 className="verification-title">E-mail 인증</h1>
         <input
+          className="authInput"
           name="authNumber"
-          placeholder="인증번호"
+          placeholder="이메일로 전송 받은 인증번호를 입력하세요."
           {...register("authNumber")}
         />
-        {errors.authNumber && <p>{errors.authNumber.message}</p>}
-        <button onClick={handleSubmit(handleSubmitAuthNumber)}>인증확인</button>
+        {errors.authNumber && (
+          <p className="verification-errors">{errors.authNumber.message}</p>
+        )}
+        <Button
+          styles="blue"
+          fullWidth="full-width"
+          onClick={handleSubmit(handleSubmitAuthNumber)}
+        >
+          인증확인
+        </Button>
       </form>
     </div>
   );

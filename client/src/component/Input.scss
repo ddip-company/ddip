@@ -1,0 +1,13 @@
+@use "../styles/base/common";
+
+.authInput {
+  width: 100%;
+  height: 42px;
+  padding: 0px 14px;
+  border: 0px solid black;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-size: common.$sm;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}

@@ -4,6 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginFormSchema } from "../util/authValidation";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
+import HeadingPageContent from "./PageContent/HeadingPageContent";
+import "./Withdraw.css";
+import "../component/Input.css";
+import Button from "../component/Button";
 
 function Withdraw() {
   const authCtx = useContext(AuthContext);
@@ -34,41 +38,56 @@ function Withdraw() {
   };
   return (
     <>
-      <h1>회원 탈퇴</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "20vh"
-        }}
-      >
-        <form style={{ display: "flex", flexDirection: "column" }}>
-          <label htmlFor="email_id">E-Mail</label>
+      <HeadingPageContent />
+
+      <div className="withdraw-container">
+        <form className="withdraw-form">
+          <h1 className="withdraw-title">회원 탈퇴</h1>
+          <label className="withdraw-label" htmlFor="email_id">
+            E-Mail
+          </label>
           <input
+            className="authInput"
             name="email"
             id="email_id"
-            placeholder="이메일"
+            placeholder="이메일을 입력하세요."
             {...register("email")}
           />
-          {errors.email && <p>{errors.email.message}</p>}
-          <label htmlFor="password_id">Password</label>
+          {errors.email && (
+            <p className="withdraw-errors">{errors.email.message}</p>
+          )}
+          <label className="withdraw-label" htmlFor="password_id">
+            Password
+          </label>
           <input
+            className="authInput"
             type="password"
             name="password"
             id="password_id"
-            placeholder="비밀번호"
+            placeholder="비밀번호를 입력하세요."
             {...register("password")}
           />
+          <p className="withdraw-errors">
+            탈퇴 시 등록된 정보를 복구할 수 없습니다.
+          </p>
+          <div className="button-container">
+            <Button
+              type="button"
+              styles="gray"
+              fullWidth="full-width"
+              onClick={() => navigate(-1)}
+            >
+              돌아가기
+            </Button>
+            <Button
+              styles="blue"
+              fullWidth="full-width"
+              onClick={handleSubmit(onSubmit)}
+            >
+              탈퇴 하기
+            </Button>
+          </div>
         </form>
-      </div>
-      <p>탈퇴 시 등록된 정보를 복구할 수 없습니다.</p>
-      <div>
-        <button onClick={() => navigate(-1)}>돌아가기</button>
-        <button onClick={handleSubmit(onSubmit)} type="submit">
-          탈퇴 하기
-        </button>
       </div>
     </>
   );

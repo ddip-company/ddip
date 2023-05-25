@@ -1,0 +1,32 @@
+.main-container {
+  margin: 130px 150px 0 150px;
+}
+
+.main-title {
+  font-family: "pretendard-900";
+  color: #19376d;
+  font-size: 2.25rem;
+  margin-bottom: 10px;
+}
+
+.main-body {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.main-text {
+  font-family: "pretendard-600";
+  color: #19376d;
+  font-size: 3.75rem;
+}
+
+.arrowImg {
+  width: 60px;
+  height: 60px;
+}
+
+.card-div {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=MainPage.css.map */

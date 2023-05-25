@@ -1,10 +1,13 @@
-import Navbar from "../component/Navbar";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../store/auth-context";
 import { loginFormSchema } from "../util/authValidation";
+import HeadingPageContent from "./PageContent/HeadingPageContent";
+import "../component/Input.css";
+import "./LoginPage.css";
+import Button from "../component/Button";
 
 const LoginPage = () => {
   const authCtx = useContext(AuthContext);
@@ -37,41 +40,43 @@ const LoginPage = () => {
 
   return (
     <>
-      <Navbar />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh"
-        }}
-      >
-        <form style={{ display: "flex", flexDirection: "column" }}>
-          <h1>로그인</h1>
-          <label htmlFor="email_id">E-Mail</label>
+      <HeadingPageContent />
+      <div className="login-container">
+        <form className="login-form">
+          <h1 className="login-title">로그인</h1>
+          <label className="login-label" htmlFor="email_id">
+            E-Mail
+          </label>
           <input
+            className="authInput"
             name="email"
             id="email_id"
-            placeholder="이메일"
+            placeholder="이메일을 입력하세요."
             {...register("email")}
           />
-          {errors.email && <p>{errors.email.message}</p>}
-          <label htmlFor="password_id">Password</label>
+          {errors.email && (
+            <p className="login-errors">{errors.email.message}</p>
+          )}
+          <label className="login-label" htmlFor="password_id">
+            Password
+          </label>
           <input
+            className="authInput"
             type="password"
             name="password"
             id="password_id"
-            placeholder="비밀번호"
+            placeholder="비밀번호를 입력하세요."
             {...register("password")}
           />
-          <br />
-          {error && <p>{error}</p>}
-          <button onClick={handleSubmit(onSubmit)} type="submit">
+          {error && <p className="login-errors">{error}</p>}
+          <Button
+            styles="blue"
+            fullWidth="full-width"
+            onClick={handleSubmit(onSubmit)}
+          >
             로그인
-          </button>
-          <br />
-          <Link to="/signup" type="submit">
+          </Button>
+          <Link className="signup-button" to="/signup" type="submit">
             회원가입
           </Link>
         </form>

@@ -49,10 +49,10 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="nav-containerLeft">
         <img
-          src={process.env.PUBLIC_URL + "/img/logo192.png"}
+          src={process.env.PUBLIC_URL + "/img/logo.png"}
           alt="logo img"
           width="100px"
-          height="21px"
+          height="50px"
         />
 
         <div className="nav-searchBar">
@@ -74,6 +74,9 @@ const Navbar = () => {
           />
           <div className="local">지역</div>
         </div>
+        <Button margin="margin" styles="blue">
+          검색
+        </Button>
         <div className="local-selected">
           {localIsSelected ? (
             <p className="selected">{`${sido} ${sigugun}`}</p>
@@ -124,7 +127,7 @@ const Navbar = () => {
               초기화
             </Button>
             <Button styles="blue" fullWidth="full-width" onClick={closeModal}>
-              버튼
+              확인
             </Button>
           </div>
         </Modal>
@@ -136,7 +139,7 @@ const Navbar = () => {
           </Link>
           {!isLoggined ? null : (
             <Link to="/signup">
-              <div className="nav-btn-text">번개만들기</div>
+              <div className="nav-mainbtn-text">번개만들기</div>
             </Link>
           )}
           {!isLoggined ? null : (

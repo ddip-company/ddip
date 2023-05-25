@@ -8,17 +8,24 @@
 }
 
 .blue {
-  //   @extend %btn;
   background: common.$blue;
   color: white;
 }
 
 .gray {
-  //   @extend %btn;
   background: common.$gray;
+  color: white;
+}
+
+.lightblue {
+  background: common.$lightblue;
   color: white;
 }
 
 .full-width {
   width: 100%;
+}
+
+.margin {
+  margin-left: 5px;
 }
