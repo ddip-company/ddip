@@ -1,0 +1,17 @@
+@use "../styles/base/common";
+
+.verification-container {
+  @extend %auth-container;
+}
+
+.verification-form {
+  @extend %auth-form;
+}
+
+.verification-title {
+  @extend %auth-title;
+}
+
+.verification-errors {
+  @extend %auth-errors;
+}

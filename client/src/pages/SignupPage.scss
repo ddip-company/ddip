@@ -1,0 +1,25 @@
+@use "../styles/base/common";
+
+.signup-container {
+  @extend %auth-container;
+}
+
+.signup-form {
+  @extend %auth-form;
+}
+
+.signup-title {
+  @extend %auth-title;
+}
+
+.signup-label {
+  @extend %auth-label;
+}
+
+.signupPassword-container {
+  margin-top: 30px;
+}
+
+.signup-errors {
+  @extend %auth-errors;
+}

@@ -1,0 +1,34 @@
+@use "../styles/base/common";
+
+.main-container {
+  margin: 130px 150px 0 150px;
+}
+
+.main-title {
+  font-family: "pretendard-900";
+  color: common.$blue;
+  font-size: common.$xll;
+  margin-bottom: 10px;
+}
+
+.main-body {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.main-text {
+  font-family: "pretendard-600";
+  color: common.$blue;
+  font-size: common.$xxxl;
+}
+
+.arrowImg {
+  width: 60px;
+  height: 60px;
+}
+
+.card-div {
+  display: flex;
+  justify-content: space-between;
+}

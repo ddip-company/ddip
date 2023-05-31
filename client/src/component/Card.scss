@@ -1,0 +1,117 @@
+@use "../styles/base/common";
+
+.card-container {
+  width: 367px;
+  height: 391px;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  padding: 26px 20px 26px 20px;
+  border-radius: 5px;
+  list-style: none;
+}
+
+.card-deadline {
+  margin-bottom: 14px;
+  font-family: "pretendard-600";
+  font-size: common.$lg;
+}
+
+.card-deadline.statusGreen {
+  color: green;
+}
+
+.card-deadline.statusOrange {
+  color: common.$orange;
+}
+
+.card-deadline.statusYellow {
+  color: common.$yellow;
+}
+
+.card-deadline.statusGray {
+  color: common.$gray;
+}
+
+.card-title {
+  margin-bottom: 14px;
+  font-family: "pretendard-600";
+  color: common.$darkblue;
+  font-size: common.$xl;
+}
+
+.card-box {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-left {
+  display: flex;
+}
+
+.card-emoji {
+  font-size: common.$base;
+}
+
+.card-nickname {
+  font-size: common.$base;
+  margin-left: 5px;
+  font-family: "pretendard-500";
+  color: common.$gray;
+}
+
+.box-right {
+  display: flex;
+}
+
+.recruitsImg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.card-recruits {
+  font-family: "pretendard-400";
+  font-size: common.$base;
+}
+
+.card-local {
+  font-size: common.$lg;
+  margin-bottom: 6px;
+  font-family: "pretendard-400";
+}
+
+.card-time {
+  font-size: common.$md;
+  font-family: "pretendard-400";
+  margin-bottom: 52px;
+}
+
+.card-footer {
+  font-size: common.$xl;
+  font-family: "pretendard-400";
+  text-align: center;
+  margin-bottom: 21px;
+}
+
+.card-count {
+  font-family: "pretendard-900";
+  text-align: center;
+  font-size: common.$xxl;
+  color: common.$blue;
+}
+
+.notify-head {
+  margin-top: 40%;
+  font-size: common.$xl;
+  text-align: center;
+  font-family: "pretendard-600";
+  color: common.$blue;
+}
+
+.notify-body {
+  margin-top: 20px;
+  font-size: common.$lg;
+  text-align: center;
+  font-family: "pretendard-600";
+  color: common.$gray;
+}

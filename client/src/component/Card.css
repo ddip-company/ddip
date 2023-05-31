@@ -1,0 +1,115 @@
+.card-container {
+  width: 367px;
+  height: 391px;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  padding: 26px 20px 26px 20px;
+  border-radius: 5px;
+  list-style: none;
+}
+
+.card-deadline {
+  margin-bottom: 14px;
+  font-family: "pretendard-600";
+  font-size: 1.25rem;
+}
+
+.card-deadline.statusGreen {
+  color: green;
+}
+
+.card-deadline.statusOrange {
+  color: #ff5934;
+}
+
+.card-deadline.statusYellow {
+  color: #ffae34;
+}
+
+.card-deadline.statusGray {
+  color: #8a8a8a;
+}
+
+.card-title {
+  margin-bottom: 14px;
+  font-family: "pretendard-600";
+  color: #0b2447;
+  font-size: 1.5rem;
+}
+
+.card-box {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-left {
+  display: flex;
+}
+
+.card-emoji {
+  font-size: 1rem;
+}
+
+.card-nickname {
+  font-size: 1rem;
+  margin-left: 5px;
+  font-family: "pretendard-500";
+  color: #8a8a8a;
+}
+
+.box-right {
+  display: flex;
+}
+
+.recruitsImg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.card-recruits {
+  font-family: "pretendard-400";
+  font-size: 1rem;
+}
+
+.card-local {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  font-family: "pretendard-400";
+}
+
+.card-time {
+  font-size: 1.125rem;
+  font-family: "pretendard-400";
+  margin-bottom: 52px;
+}
+
+.card-footer {
+  font-size: 1.5rem;
+  font-family: "pretendard-400";
+  text-align: center;
+  margin-bottom: 21px;
+}
+
+.card-count {
+  font-family: "pretendard-900";
+  text-align: center;
+  font-size: 2.75rem;
+  color: #19376d;
+}
+
+.notify-head {
+  margin-top: 40%;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "pretendard-600";
+  color: #19376d;
+}
+
+.notify-body {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  text-align: center;
+  font-family: "pretendard-600";
+  color: #8a8a8a;
+}/*# sourceMappingURL=Card.css.map */
