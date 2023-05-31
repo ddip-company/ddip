@@ -14,3 +14,43 @@ $base: 1rem; // 16px
 $md: 1.125rem; // 18px
 $lg: 1.25rem; // 20px
 $xl: 1.5rem; // 24px
+$xll: 2.25rem; //36px
+$xxl: 2.75rem; //44px
+$xxxl: 3.75rem; //60px
+
+%auth-container {
+  max-width: 1240px;
+  padding: 40px 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+%auth-form {
+  width: 500px;
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
+  padding: 50px;
+  border-radius: 5px;
+}
+
+%auth-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  font-family: "pretendard-600";
+  color: $blue;
+  font-size: $xl;
+}
+
+%auth-label {
+  font-family: "pretendard-300";
+}
+
+%auth-errors {
+  margin-top: 2px;
+  margin-bottom: 22px;
+  font-family: "pretendard-400";
+  color: $orange;
+}
