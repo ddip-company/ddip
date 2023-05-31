@@ -1,3 +1,5 @@
+@use "../styles/base/common";
+
 .nav-container {
   width: 100%;
   height: 77px;
@@ -7,11 +9,15 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
-.nav-containerLeft {
+@mixin common($props) {
   display: flex;
   align-items: center;
   height: 35px;
-  padding-left: 150px;
+  #{ $props }: 150px;
+}
+
+.nav-containerLeft {
+  @include common(padding-left);
 }
 
 .nav-searchBar {
@@ -20,23 +26,24 @@
   box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  border: 0px solid rgba(0, 0, 0, 0);
+  border: 0px solid #0000;
   display: flex;
   align-items: center;
   margin-left: 80px;
-}
-.nav-searchBar .searchImg {
-  width: 18px;
-  height: 18px;
-  margin-left: 15px;
-}
-.nav-searchBar .nav-input {
-  width: 482px;
-  height: 24px;
-  border: 0px solid rgba(0, 0, 0, 0);
-  font-family: "Pretendard-300";
-  font-size: 15px;
-  margin-left: 15px;
+  //   flex-grow: 1;
+  .searchImg {
+    width: 18px;
+    height: 18px;
+    margin-left: 15px;
+  }
+  .nav-input {
+    width: 482px;
+    height: 24px;
+    border: 0px solid #0000;
+    font-family: "Pretendard-300";
+    font-size: 15px;
+    margin-left: 15px;
+  }
 }
 
 .nav-local {
@@ -47,19 +54,19 @@
   box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  border: 0px solid rgba(0, 0, 0, 0);
+  border: 0px solid #0000;
   cursor: pointer;
-}
-.nav-local .mapImg {
-  width: 20px;
-  height: 18px;
-  margin-left: 15px;
-}
-.nav-local .local {
-  font-family: "Pretendard-300";
-  font-size: 15px;
-  margin-left: 10px;
-  color: #8a8a8a;
+  .mapImg {
+    width: 20px;
+    height: 18px;
+    margin-left: 15px;
+  }
+  .local {
+    font-family: "Pretendard-300";
+    font-size: 15px;
+    margin-left: 10px;
+    color: common.$gray;
+  }
 }
 
 .local-selected {
@@ -69,19 +76,16 @@
   box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   margin-left: 10px;
-}
-.local-selected .selected {
-  color: black;
-  font-family: "pretendard-300";
-  margin-left: 10px;
-  margin-right: 10px;
+  .selected {
+    color: black;
+    font-family: "pretendard-300";
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 .nav-containerRight {
-  display: flex;
-  align-items: center;
-  height: 35px;
-  padding-right: 150px;
+  @include common(padding-right);
 }
 
 .nav-btn {
@@ -90,7 +94,7 @@
 
 .nav-btn-text {
   font-family: "Pretendard-600";
-  font-size: 1rem;
+  font-size: common.$base;
   margin-left: 50px;
   cursor: pointer;
 }
@@ -98,39 +102,36 @@
 .localList-header {
   margin-bottom: 15px;
   font-family: "Pretendard-600";
-  color: #0b2447;
+  color: common.$darkblue;
 }
 
 .localList-wrapper {
   display: flex;
   font-family: "Pretendard-400";
-}
-.localList-wrapper .list-title {
-  text-align: left;
-  margin-bottom: 6px;
-  font-size: 0.75rem;
-  color: #19376d;
+  .list-title {
+    text-align: left;
+    margin-bottom: 6px;
+    font-size: common.$xs;
+    color: common.$blue;
+  }
 }
 
 .sido-list {
   width: 160px;
   height: 140px;
   overflow-y: scroll;
-  border: 1px solid #19376d;
-  font-size: 0.875rem;
+  border: 1px solid common.$blue;
+  font-size: common.$sm;
   cursor: pointer;
   border-radius: 5px;
 }
-
 .sido-list::-webkit-scrollbar {
   width: 5px;
 }
-
 .sido-list::-webkit-scrollbar-thumb {
-  background-color: #19376d;
+  background-color: common.$blue;
   border-radius: 10px;
 }
-
 .sido-list::-webkit-scrollbar-track {
   border-radius: 10px;
 }
@@ -139,22 +140,19 @@
   width: 160px;
   height: 140px;
   overflow-y: scroll;
-  border: 1px solid #19376d;
-  font-size: 0.875rem;
+  border: 1px solid common.$blue;
+  font-size: common.$sm;
   cursor: pointer;
   border-left: 0px;
   border-radius: 5px;
 }
-
 .sigugun-list::-webkit-scrollbar {
   width: 5px;
 }
-
 .sigugun-list::-webkit-scrollbar-thumb {
-  background-color: #19376d;
+  background-color: common.$blue;
   border-radius: 10px;
 }
-
 .sigugun-list::-webkit-scrollbar-track {
   border-radius: 10px;
 }
@@ -164,7 +162,7 @@
 }
 
 .list-li.active {
-  color: #19376d;
+  color: common.$blue;
   font-family: "Pretendard-600";
 }
 
@@ -172,4 +170,4 @@
   display: flex;
   gap: 10px;
   margin-top: 24px;
-}/*# sourceMappingURL=Navbar.css.map */
+}

@@ -1,0 +1,24 @@
+@use "../styles/base/common";
+
+.Button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  font-family: "pretendard-400";
+}
+
+.blue {
+  //   @extend %btn;
+  background: common.$blue;
+  color: white;
+}
+
+.gray {
+  //   @extend %btn;
+  background: common.$gray;
+  color: white;
+}
+
+.full-width {
+  width: 100%;
+}
