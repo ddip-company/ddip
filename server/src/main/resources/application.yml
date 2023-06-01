@@ -8,21 +8,13 @@ spring:
       username: dltntnqo
       password:
       driver-class-name: org.h2.Driver
-  #  datasource:
-  #    url: jdbc:mysql://localhost:3306/ddip?characterEncoding=UTF-8&serverTimezone=UTC
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
-  #    username: root
-  #    password: 1234
-  jpa:
-    defer-datasource-initialization: true
-    #    hibernate:
-    #      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
         use_sql_comments: true
         format_sql: true
-
+        
+  
   redis:
     host: localhost
     port: 6379

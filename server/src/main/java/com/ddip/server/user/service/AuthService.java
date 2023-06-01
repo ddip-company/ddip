@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class AuthService {
+
     private final UserRepository userRepository;
     private final SignupConfirmationRepository signupConfirmationRepository;
     private final MailConfirmationSenderImp mailSender;
@@ -33,6 +34,7 @@ public class AuthService {
                 .email(signup.getEmail())
                 .password(signup.getPassword())
                 .nickname(signup.getNickname())
+                .emoji(signup.getEmoji())
                 .isConfirm(false)
                 .build();
 
@@ -62,6 +64,7 @@ public class AuthService {
 
         return users.toLoginUser();
     }
+
     public void withdraw(Withdraw withdraw) {
         Users user = userRepository.findByEmail(withdraw.getEmail())
                 .orElseThrow(() -> new RuntimeException("존재하지 않는 이메일 입니다."));
