@@ -8,23 +8,30 @@ import lombok.Getter;
 @Getter
 public class MeetingResponse {
 
-  private Long id;
-  private User owner;
-  private String title;
-  private String description;
-  private Location location;
-  private LocalDateTime meetingAt;
-  private Integer numberOfPeople;
+    private Long id;
+    private User owner;
+    private String title;
+    private String description;
+    private Location location;
+    private String openChat;
+    private LocalDateTime meetingAt;
+    private LocalDateTime createdAt;
+    private Integer numberOfRecruits;
+    private Integer numberOfParticipants;
 
-  @Builder
-  public MeetingResponse(Long id, User owner, String title, String description, Location location,
-      LocalDateTime meetingAt, Integer numberOfPeople) {
-    this.id = id;
-    this.owner = owner;
-    this.title = title;
-    this.description = description;
-    this.location = location;
-    this.meetingAt = meetingAt;
-    this.numberOfPeople = numberOfPeople;
-  }
+
+    @Builder
+    public MeetingResponse(Long id, User owner, String title, String description, Location location, String openChat,
+            LocalDateTime meetingAt, LocalDateTime createdAt, Integer numberOfRecruits, Integer numberOfParticipants) {
+        this.id = id;
+        this.owner = owner;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.openChat = openChat;
+        this.meetingAt = meetingAt;
+        this.createdAt = createdAt;
+        this.numberOfRecruits = numberOfRecruits;
+        this.numberOfParticipants = numberOfParticipants;
+    }
 }

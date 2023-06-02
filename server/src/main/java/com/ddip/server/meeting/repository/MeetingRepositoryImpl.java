@@ -3,6 +3,7 @@ package com.ddip.server.meeting.repository;
 import static com.ddip.server.meeting.domain.QMeeting.meeting;
 
 import com.ddip.server.meeting.domain.Meeting;
+import com.ddip.server.meeting.dto.request.Address;
 import com.ddip.server.meeting.dto.request.SearchMeeting;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -13,79 +14,84 @@ import org.springframework.util.StringUtils;
 @RequiredArgsConstructor
 public class MeetingRepositoryImpl implements MeetingRepositoryCustom {
 
-  private final JPAQueryFactory jpaQueryFactory;
+    private final JPAQueryFactory jpaQueryFactory;
 
-  @Override
-  public List<Meeting> search(SearchMeeting searchMeeting) {
-    return jpaQueryFactory
-        .selectFrom(meeting)
-        .where(
-            containsTitle(searchMeeting.getKeyword()).or(
-                containsDescription(searchMeeting.getKeyword())
-            ).or(
-                containsCountry(searchMeeting.getKeyword())
-            ).or(
-                containsCity(searchMeeting.getKeyword())
-            ).or(
-                containsState(searchMeeting.getKeyword())
-            ).or(
-                containsStreet(searchMeeting.getKeyword())
-            ).or(
-                containsZipCode(searchMeeting.getKeyword()))
-        )
-        .limit(searchMeeting.getSize())
-        .offset(searchMeeting.getOffset())
-        .orderBy(meeting.id.desc())
-        .fetch();
-  }
-
-  private BooleanExpression containsTitle(String title) {
-    if (StringUtils.isEmpty(title)) {
-      return null;
+    @Override
+    public List<Meeting> search(SearchMeeting searchMeeting) {
+        return jpaQueryFactory
+                .selectFrom(meeting)
+                .where(
+                        containsTitle(searchMeeting.getKeyword()).or(containsDescription(searchMeeting.getKeyword())),
+                        eqCountry(searchMeeting.getAddress().getCountry()),
+                        eqCity(searchMeeting.getAddress().getCity()),
+                        eqState(searchMeeting.getAddress().getState()),
+                        eqStreet(searchMeeting.getAddress().getStreet()),
+                        eqZipCode(searchMeeting.getAddress().getZipCode())
+                )
+                .limit(searchMeeting.getSize())
+                .offset(searchMeeting.getOffset())
+                .orderBy(meeting.id.desc())
+                .fetch();
     }
-    return meeting.title.containsIgnoreCase(title);
-  }
 
-  private BooleanExpression containsDescription(String description) {
-    if (StringUtils.isEmpty(description)) {
-      return null;
+    private BooleanExpression containsLocation(Address address) {
+        if (address == null) {
+            return null;
+        }
+        return eqCountry(address.getCountry())
+                .and(eqCity(address.getCity()))
+                .and(eqState(address.getState()))
+                .and(eqStreet(address.getStreet()))
+                .and(eqZipCode(address.getZipCode()));
     }
-    return meeting.description.containsIgnoreCase(description);
-  }
 
-  private BooleanExpression containsCountry(String country) {
-    if (StringUtils.isEmpty(country)) {
-      return null;
+    private BooleanExpression containsTitle(String title) {
+        if (StringUtils.isEmpty(title)) {
+            return null;
+        }
+        return meeting.title.containsIgnoreCase(title);
     }
-    return meeting.location.country.containsIgnoreCase(country);
-  }
 
-  private BooleanExpression containsCity(String city) {
-    if (StringUtils.isEmpty(city)) {
-      return null;
+    private BooleanExpression containsDescription(String description) {
+        if (StringUtils.isEmpty(description)) {
+            return null;
+        }
+        return meeting.description.containsIgnoreCase(description);
     }
-    return meeting.location.city.containsIgnoreCase(city);
-  }
 
-  private BooleanExpression containsState(String state) {
-    if (StringUtils.isEmpty(state)) {
-      return null;
+    private BooleanExpression eqCountry(String country) {
+        if (StringUtils.isEmpty(country)) {
+            return null;
+        }
+        return meeting.location.country.eq(country);
     }
-    return meeting.location.state.containsIgnoreCase(state);
-  }
 
-  private BooleanExpression containsStreet(String street) {
-    if (StringUtils.isEmpty(street)) {
-      return null;
+    private BooleanExpression eqCity(String city) {
+        if (StringUtils.isEmpty(city)) {
+            return null;
+        }
+        return meeting.location.city.eq(city);
     }
-    return meeting.location.street.containsIgnoreCase(street);
-  }
 
-  private BooleanExpression containsZipCode(String zipCode) {
-    if (StringUtils.isEmpty(zipCode)) {
-      return null;
+    private BooleanExpression eqState(String state) {
+        if (StringUtils.isEmpty(state)) {
+            return null;
+        }
+        return meeting.location.state.eq(state);
     }
-    return meeting.location.zipCode.containsIgnoreCase(zipCode);
-  }
+
+    private BooleanExpression eqStreet(String street) {
+        if (StringUtils.isEmpty(street)) {
+            return null;
+        }
+        return meeting.location.street.eq(street);
+    }
+
+    private BooleanExpression eqZipCode(String zipCode) {
+        if (StringUtils.isEmpty(zipCode)) {
+            return null;
+        }
+        return meeting.location.zipCode.eq(zipCode);
+    }
 
 }
