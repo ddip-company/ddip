@@ -26,7 +26,7 @@ const MainPage = () => {
   return (
     <>
       <Navbar />
-      <div className="main-container">
+      <section className="main-container">
         <p className="main-title">CLOSING SOON</p>
         <div className="main-body">
           <div className="main-text">마감 임박 번개</div>
@@ -44,8 +44,8 @@ const MainPage = () => {
           </div>
         </div>
         <BungaeListContent bungaeList={filledImminentBungaeList} />
-      </div>
-      <div className="main-container">
+      </section>
+      <section className="main-container">
         <p className="main-title">REAL TIME</p>
         <div className="main-body">
           <div className="main-text">실시간 최신 번개</div>
@@ -63,7 +63,7 @@ const MainPage = () => {
           </div>
         </div>
         <BungaeListContent bungaeList={filledNewBungaeList} />
-      </div>
+      </section>
     </>
   );
 };

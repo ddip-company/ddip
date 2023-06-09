@@ -73,7 +73,7 @@ const SignUp = () => {
     <>
       <HeadingPageContent />
 
-      <div className="signup-container">
+      <section className="signup-container">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -155,7 +155,7 @@ const SignUp = () => {
             가입하기
           </Button>
         </form>
-      </div>
+      </section>
     </>
   );
 };

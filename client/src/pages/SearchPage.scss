@@ -1,0 +1,17 @@
+@use "../styles/base/common";
+
+.search-container {
+  margin: 130px 150px 0 150px;
+}
+
+.search-Wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.Search-head {
+  font-family: "pretendard-900";
+  font-size: common.$xll;
+}

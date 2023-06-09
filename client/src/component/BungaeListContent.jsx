@@ -4,10 +4,10 @@ import * as cardFunction from "../util/cardFunction";
 const BungaeListContent = ({ bungaeList }) => {
   return (
     <ul className="card-div">
-      {bungaeList.map((item) => {
+      {bungaeList.map((item, idx) => {
         if (!item) {
           return (
-            <li className="card-container">
+            <li key={idx} className="card-container">
               <div className="notify-head">"모집중인 번개가 없습니다"</div>
               <div className="notify-body">-no schedule-</div>
             </li>
