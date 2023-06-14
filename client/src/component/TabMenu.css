@@ -15,4 +15,9 @@
 
 .tab-Wrapper {
   display: flex;
+}
+
+.srcImg {
+  margin-left: 15px;
+  height: 15px;
 }/*# sourceMappingURL=TabMenu.css.map */

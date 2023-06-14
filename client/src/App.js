@@ -14,6 +14,8 @@ function App() {
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/mypage/:nickname" element={<MyPage />}></Route>
+      {/* <Route path="/mypage/:nickname/created" element={<MyPage />}></Route>
+      <Route path="/mypage/:nickname/participated" element={<MyPage />}></Route> */}
       <Route path="/withdraw" element={<Withdraw />}></Route>
       <Route path="/email-auth" element={<VerificationPage />}></Route>
       <Route path="/bungae-search" element={<SearchPage />}></Route>

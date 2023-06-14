@@ -11,25 +11,28 @@ function TabMenu({ sortBy, onSwitch, tab }) {
 
   return (
     <section className="tab-Wrapper">
-      {tab.map((menu) => (
-        <li
-          className={`tab-li ${selectedTab === menu.linkTo ? "active" : ""}`}
-          role="menuitem"
-          key={menu.name}
-          onClick={() => switchTabHandler(menu.linkTo)}
-        >
-          <div className="tab-menu">
-            <div>{menu.name}</div>
-            {menu.imageSrc && (
-              <img
-                src={`process.env.PUBLIC_URL + ${menu.imageSrc}`}
-                alt={`${menu.imageAlt}`}
-              />
-            )}
-          </div>
-          {menu.sortBy.includes(sortBy)}
-        </li>
-      ))}
+      {tab.map((menu) => {
+        return (
+          <li
+            className={`tab-li ${selectedTab === menu.linkTo ? "active" : ""}`}
+            role="menuitem"
+            key={menu.name}
+            onClick={() => switchTabHandler(menu.linkTo)}
+          >
+            <div className="tab-menu">
+              <div>{menu.name}</div>
+              {menu.imageSrc && (
+                <img
+                  className="srcImg"
+                  src={process.env.PUBLIC_URL + `${menu.imageSrc}`}
+                  alt={`${menu.imageAlt}`}
+                />
+              )}
+            </div>
+            {menu.sortBy.includes(sortBy)}
+          </li>
+        );
+      })}
     </section>
   );
 }

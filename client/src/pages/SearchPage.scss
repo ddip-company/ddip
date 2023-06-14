@@ -8,10 +8,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 50px;
 }
 
 .Search-head {
   font-family: "pretendard-900";
+  color: common.$blue;
   font-size: common.$xll;
+  margin-bottom: 10px;
 }
