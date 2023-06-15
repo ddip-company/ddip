@@ -1,0 +1,45 @@
+@use "../styles/base/common";
+
+.mypage-container {
+  @extend %auth-container;
+}
+
+.mypage-form {
+  @extend %auth-form;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.mypage-title {
+  @extend %auth-title;
+}
+
+.mypage-label {
+  @extend %auth-label;
+  margin-top: 20px;
+}
+
+.mypage-emoji {
+  height: 120px;
+  width: 120px;
+  border: 1px solid black;
+  border-radius: 50%;
+  font-size: 40px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypage-Wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.UserBungaeList-container {
+  margin: 30px 150px 0 150px;
+}

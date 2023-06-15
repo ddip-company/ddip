@@ -3,10 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
 import { ProfilePageTabMenu as tab } from "../static/sortTab";
-import Navbar from "../component/Navbar";
 import { dummyBungaeList2 } from "../static/dummy/bungaeList";
 import UserInfo from "../component/UserInfo";
 import UserBungaeList from "../component/UserBungaeList";
+import Navbar from "../component/Navbar";
 
 function Mypage() {
   const { userInfo } = useContext(AuthContext);
@@ -39,12 +39,14 @@ function Mypage() {
         email={userInfo.email}
         handleSubmitLogout={handleSubmitLogout}
       />
-      <UserBungaeList
-        sortBy={pathname}
-        onSwitchTab={handleSwitchTab}
-        tab={tab}
-        bungaeList={bungaeList}
-      />
+      <div className="UserBungaeList-container">
+        <UserBungaeList
+          sortBy={pathname}
+          onSwitchTab={handleSwitchTab}
+          tab={tab}
+          bungaeList={bungaeList}
+        />
+      </div>
     </>
   );
 }

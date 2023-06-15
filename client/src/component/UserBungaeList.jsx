@@ -3,12 +3,12 @@ import TabMenu from "./TabMenu";
 
 function UserBungaeList({ sortBy, onSwitchTab, tab, bungaeList }) {
   return (
-    <>
-      <div>
+    <section>
+      <div className="mypage-Wrapper">
         <TabMenu sortBy={sortBy} onSwitch={onSwitchTab} tab={tab} />
       </div>
       <BungaeListContent bungaeList={bungaeList} />
-    </>
+    </section>
   );
 }
 
