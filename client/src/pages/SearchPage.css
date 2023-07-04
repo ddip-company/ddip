@@ -1,0 +1,17 @@
+.search-container {
+  margin: 130px 150px 0 150px;
+}
+
+.search-Wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.Search-head {
+  font-family: "pretendard-900";
+  color: #19376d;
+  font-size: 2.25rem;
+  margin-bottom: 10px;
+}/*# sourceMappingURL=SearchPage.css.map */

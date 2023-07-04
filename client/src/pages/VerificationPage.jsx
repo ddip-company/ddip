@@ -35,7 +35,7 @@ function VerificationPage() {
     }
   };
   return (
-    <div className="verification-container">
+    <section className="verification-container">
       <form className="verification-form">
         <h1 className="verification-title">E-mail 인증</h1>
         <input
@@ -55,7 +55,7 @@ function VerificationPage() {
           인증확인
         </Button>
       </form>
-    </div>
+    </section>
   );
 }
 

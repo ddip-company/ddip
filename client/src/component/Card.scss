@@ -9,6 +9,11 @@
   list-style: none;
 }
 
+.card-container.statusGray {
+  filter: blur(1px);
+  background-color: rgb(230, 229, 229);
+}
+
 .card-deadline {
   margin-bottom: 14px;
   font-family: "pretendard-600";

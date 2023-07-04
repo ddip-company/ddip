@@ -41,7 +41,7 @@ const LoginPage = () => {
   return (
     <>
       <HeadingPageContent />
-      <div className="login-container">
+      <section className="login-container">
         <form className="login-form">
           <h1 className="login-title">로그인</h1>
           <label className="login-label" htmlFor="email_id">
@@ -80,7 +80,7 @@ const LoginPage = () => {
             회원가입
           </Link>
         </form>
-      </div>
+      </section>
     </>
   );
 };

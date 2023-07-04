@@ -25,7 +25,7 @@ function Card({
   }, [meetingAt]);
 
   return (
-    <li className="card-container">
+    <li className={`card-container ${status.color}`}>
       <div className={`card-deadline ${status.color}`}>{status.text}</div>
       <div className="card-title">{title}</div>
       <div className="card-box">

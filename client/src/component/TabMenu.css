@@ -1,0 +1,23 @@
+.tab-li {
+  cursor: pointer;
+  list-style: none;
+}
+
+.tab-menu {
+  padding: 0.5rem;
+  font-family: "Pretendard-600";
+  display: flex;
+}
+
+.tab-li.active {
+  color: #ff5934;
+}
+
+.tab-Wrapper {
+  display: flex;
+}
+
+.srcImg {
+  margin-left: 15px;
+  height: 15px;
+}/*# sourceMappingURL=TabMenu.css.map */

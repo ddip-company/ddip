@@ -1,26 +1,51 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { ProfilePageTabMenu as tab } from "../static/sortTab";
+import { dummyBungaeList2 } from "../static/dummy/bungaeList";
+import UserInfo from "../component/UserInfo";
+import UserBungaeList from "../component/UserBungaeList";
 import Navbar from "../component/Navbar";
 
 function Mypage() {
   const { userInfo } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [bungaeList, setBungaeList] = useState([]);
+  const authActions = useContext(AuthContext);
+
+  useEffect(() => {
+    setBungaeList(dummyBungaeList2);
+  }, []);
+
+  const handleSubmitLogout = () => {
+    authActions.logoutHandler();
+    return navigate("/");
+  };
+
+  const handleSwitchTab = (selected) => {
+    navigate(selected);
+  };
+
+  if (!userInfo) return;
 
   return (
     <>
       <Navbar />
-      <h1>프로필</h1>
-      <div>
-        <p>
-          <strong>[ email ]</strong> {userInfo.email}
-        </p>
-        <p>
-          <strong>[ nickname ]</strong> {userInfo.nickname}
-        </p>
-      </div>
-      <div>
-        <button onClick={() => navigate("/withdraw")}>회원 탈퇴</button>
+      <UserInfo
+        emoji={userInfo.emoji}
+        nickname={userInfo.nickname}
+        email={userInfo.email}
+        handleSubmitLogout={handleSubmitLogout}
+      />
+      <div className="UserBungaeList-container">
+        <UserBungaeList
+          sortBy={pathname}
+          onSwitchTab={handleSwitchTab}
+          tab={tab}
+          bungaeList={bungaeList}
+        />
       </div>
     </>
   );

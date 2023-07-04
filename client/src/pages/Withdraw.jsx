@@ -40,7 +40,7 @@ function Withdraw() {
     <>
       <HeadingPageContent />
 
-      <div className="withdraw-container">
+      <section className="withdraw-container">
         <form className="withdraw-form">
           <h1 className="withdraw-title">회원 탈퇴</h1>
           <label className="withdraw-label" htmlFor="email_id">
@@ -84,11 +84,11 @@ function Withdraw() {
               fullWidth="full-width"
               onClick={handleSubmit(onSubmit)}
             >
-              탈퇴 하기
+              탈퇴하기
             </Button>
           </div>
         </form>
-      </div>
+      </section>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
 import "./Navbar.css";
 import { useContext, useState } from "react";
@@ -10,6 +10,7 @@ import { localList } from "../static/dummy/localList";
 // useContext는 전역으로 관리하는 데이터를 받아올 수 있게 하는 함수
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { isLoggined, userInfo } = useContext(AuthContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLocal, setSelectedLocal] = useState({
@@ -20,6 +21,10 @@ const Navbar = () => {
   const localIsSelected = sido !== "" && sigugun !== "";
   const [currentSido, setCurrentSido] = useState(0);
   const [currentSigugun, setCurrentSigugun] = useState(null);
+
+  const handleSearch = () => {
+    navigate("/bungae-search");
+  };
 
   const openModal = () => {
     setModalOpen(true);
@@ -46,14 +51,16 @@ const Navbar = () => {
   };
 
   return (
-    <div className="nav-container">
+    <section className="nav-container">
       <div className="nav-containerLeft">
-        <img
-          src={process.env.PUBLIC_URL + "/img/logo.png"}
-          alt="logo img"
-          width="100px"
-          height="50px"
-        />
+        <Link to="/">
+          <img
+            src={process.env.PUBLIC_URL + "/img/logo.png"}
+            alt="logo img"
+            width="100px"
+            height="50px"
+          />
+        </Link>
 
         <div className="nav-searchBar">
           <img
@@ -74,7 +81,7 @@ const Navbar = () => {
           />
           <div className="local">지역</div>
         </div>
-        <Button margin="margin" styles="blue">
+        <Button margin="margin" styles="blue" onClick={handleSearch}>
           검색
         </Button>
         <div className="local-selected">
@@ -94,6 +101,7 @@ const Navbar = () => {
                     className={
                       idx === currentSido ? "active list-li" : "list-li"
                     }
+                    role="menuitem"
                     onClick={() => selectSidoHandler(idx, sido)}
                   >
                     {sido}
@@ -110,6 +118,7 @@ const Navbar = () => {
                     className={
                       idx === currentSigugun ? "active list-li" : "list-li"
                     }
+                    role="menuitem"
                     onClick={() => selectSigugunHandler(idx, el)}
                   >
                     {el}
@@ -156,7 +165,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
