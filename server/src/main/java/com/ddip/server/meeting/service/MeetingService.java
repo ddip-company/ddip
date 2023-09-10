@@ -49,4 +49,16 @@ public class MeetingService {
     meeting.update(owner, request.getTitle(), request.getDescription(), request.getAddress().toLocation(),
         request.getMeetingAt(), request.getNumberOfRecruits());
   }
+
+  @Transactional
+  public void deleteMeeting(UserSession userSession, Long id) {
+    Users owner = userRepository.findById(userSession.getId())
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+    Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
+        + "않는 번개입니다."));
+    if (!meeting.isOwner(owner)) {
+      throw new SecurityException("번개의 주인만 삭제가 가능합니다.");
+    }
+    meetingRepository.delete(meeting);
+  }
 }

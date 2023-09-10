@@ -2,16 +2,20 @@ package com.ddip.server.user.domain;
 
 import static com.ddip.server.user.service.JwtService.buildJwt;
 
+import com.ddip.server.meeting.domain.Meeting;
 import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.response.LoginUser;
 import com.ddip.server.user.dto.response.User;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -37,6 +41,8 @@ public class Users {
   private String password;
 
   private Boolean isConfirm;
+  @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Meeting> meetings;
   @CreatedDate
   private LocalDateTime createdAt;
   @LastModifiedDate

@@ -2,7 +2,6 @@ package com.ddip.server.meeting.domain;
 
 import com.ddip.server.meeting.dto.response.MeetingResponse;
 import com.ddip.server.user.domain.Users;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -28,7 +27,7 @@ public class Meeting {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "owner_id")
   private Users owner;
   @Column
@@ -90,5 +89,9 @@ public class Meeting {
     this.location = location;
     this.meetingAt = meetingAt;
     this.numberOfRecruits = numberOfRecruits;
+  }
+
+  public boolean isOwner(Users owner) {
+    return owner.equals(this.owner);
   }
 }
