@@ -35,10 +35,6 @@
   margin-bottom: 40px;
 }
 
-.mypage-label {
-  margin-top: 20px;
-}
-
 .mypage-emoji {
   height: 120px;
   width: 120px;
@@ -53,7 +49,7 @@
 
 .mypage-Wrapper {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 25px;
 }

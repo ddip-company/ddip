@@ -18,7 +18,6 @@
 
 .mypage-label {
   @extend %auth-label;
-  margin-top: 20px;
 }
 
 .mypage-emoji {
@@ -35,7 +34,7 @@
 
 .mypage-Wrapper {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 25px;
 }

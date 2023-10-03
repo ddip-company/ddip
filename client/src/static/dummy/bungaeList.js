@@ -17,8 +17,8 @@ export const dummyBungaeList2 = [
       zipCode: "1234",
       detail: "303호"
     },
-    createdAt: "2023-05-17T00:00:00", // 필요
-    meetingAt: "2023-06-03T13:00:00",
+    createdAt: "2023-09-28T00:00:00", // 필요
+    meetingAt: "2023-09-29T20:00:00",
     numberOfParticipants: 2, // 필요
     numberOfRecruits: 4
   },
