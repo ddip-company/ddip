@@ -1,3 +1,5 @@
+import { emojiList } from "../static/dummy/emojiList";
+
 const getAuthTokenDuration = () => {
   const storedExpirationDate = localStorage.getItem("expiration");
   const expirationDate = new Date(storedExpirationDate);
@@ -31,4 +33,9 @@ export const removeStoredTokenInfo = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expiration");
   localStorage.removeItem("userInfo");
+};
+
+export const getRandomEmoji = () => {
+  const randomIdx = Math.floor(Math.random() * emojiList.length);
+  return emojiList[randomIdx];
 };
