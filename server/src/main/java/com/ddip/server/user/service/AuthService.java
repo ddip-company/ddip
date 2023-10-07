@@ -8,10 +8,8 @@ import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.request.Signup;
 import com.ddip.server.user.dto.request.Withdraw;
 import com.ddip.server.user.dto.response.LoginUser;
-import com.ddip.server.user.dto.response.User;
 import com.ddip.server.user.repository.SignupConfirmationRepository;
 import com.ddip.server.user.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -84,10 +82,5 @@ public class AuthService {
         if (userRepository.findByNickname(signup.getNickname()).isPresent()) {
             throw new RuntimeException("이미 존재하는 닉네임 입니다.");
         }
-    }
-
-    public User findUserByNickname(String nickname) {
-        return userRepository.findByNickname(nickname)
-                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 닉네임 입니다.")).toUser();
     }
 }
