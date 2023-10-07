@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class AuthService {
 
@@ -27,6 +27,7 @@ public class AuthService {
 
     private static final String MAIL_TITLE = "Ddip 서비스 인증번호";
 
+    @Transactional
     public void signup(Signup signup) throws RuntimeException {
         validateSignup(signup);
 
@@ -45,6 +46,7 @@ public class AuthService {
         mailSender.send(signupConfirmation.getKey());
     }
 
+    @Transactional
     public void confirm(Confirm confirm) {
         if (!signupConfirmationRepository.findOneByEmail(confirm.getEmail()).orElseThrow()
                 .equals(confirm.toSignupConfirmation())) {
@@ -65,6 +67,7 @@ public class AuthService {
         return users.toLoginUser();
     }
 
+    @Transactional
     public void withdraw(Withdraw withdraw) {
         Users user = userRepository.findByEmail(withdraw.getEmail())
                 .orElseThrow(() -> new RuntimeException("존재하지 않는 이메일 입니다."));
