@@ -7,6 +7,8 @@ import VerificationPage from "./pages/VerificationPage";
 import Withdraw from "./pages/Withdraw";
 import SearchPage from "./pages/SearchPage";
 import ModifyMyPage from "./pages/ModifyMyPage";
+import BungaeDetailPage from "./pages/BungaeDetailPage";
+import BungaeCreatePage from "./pages/BungaeCreatePage";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
       <Route path="/withdraw" element={<Withdraw />}></Route>
       <Route path="/email-auth" element={<VerificationPage />}></Route>
       <Route path="/bungae-search" element={<SearchPage />}></Route>
+      <Route path="/bungae-detail/:id" element={<BungaeDetailPage />}></Route>
+      <Route path="/bungae-create" element={<BungaeCreatePage />}></Route>
     </Routes>
   );
 }

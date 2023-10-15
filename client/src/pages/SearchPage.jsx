@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-import { dummyBungaeList2 } from "../static/dummy/bungaeList";
+import { dummyBungaeList } from "../static/dummy/bungaeList";
 import SearchedBungaeList from "../component/SearchedBungaeList";
 import { searchPageTabMenu as tab } from "../static/sortTab";
 import { useSearchParams } from "react-router-dom";
@@ -11,7 +11,7 @@ function SearchPage() {
   const sort = searchParams.get("sort");
 
   useEffect(() => {
-    setBungaeList(dummyBungaeList2);
+    setBungaeList(dummyBungaeList);
   }, []);
 
   const makeFilledBungaeList = (bungaeList) => {

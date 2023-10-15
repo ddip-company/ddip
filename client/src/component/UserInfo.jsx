@@ -1,4 +1,4 @@
-import "../pages/MyPage.css";
+import "../styles/css/MyPage.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 

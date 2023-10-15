@@ -1,5 +1,3 @@
-@use "../styles/base/common";
-
 .card-div {
   display: flex;
   justify-content: space-between;
@@ -13,6 +11,7 @@
   padding: 26px 20px 26px 20px;
   border-radius: 5px;
   list-style: none;
+  cursor: pointer;
 }
 
 .card-container.statusGray {
@@ -23,7 +22,7 @@
 .card-deadline {
   margin-bottom: 14px;
   font-family: "pretendard-600";
-  font-size: common.$lg;
+  font-size: 1.25rem;
 }
 
 .card-deadline.statusGreen {
@@ -31,22 +30,22 @@
 }
 
 .card-deadline.statusOrange {
-  color: common.$orange;
+  color: #ff5934;
 }
 
 .card-deadline.statusYellow {
-  color: common.$yellow;
+  color: #ffae34;
 }
 
 .card-deadline.statusGray {
-  color: common.$gray;
+  color: #8a8a8a;
 }
 
 .card-title {
   margin-bottom: 14px;
   font-family: "pretendard-600";
-  color: common.$darkblue;
-  font-size: common.$xl;
+  color: #0b2447;
+  font-size: 1.5rem;
 }
 
 .card-box {
@@ -60,14 +59,14 @@
 }
 
 .card-emoji {
-  font-size: common.$base;
+  font-size: 1rem;
 }
 
 .card-nickname {
-  font-size: common.$base;
+  font-size: 1rem;
   margin-left: 5px;
   font-family: "pretendard-500";
-  color: common.$gray;
+  color: #8a8a8a;
 }
 
 .box-right {
@@ -82,23 +81,23 @@
 
 .card-recruits {
   font-family: "pretendard-400";
-  font-size: common.$base;
+  font-size: 1rem;
 }
 
 .card-local {
-  font-size: common.$lg;
+  font-size: 1.25rem;
   margin-bottom: 6px;
   font-family: "pretendard-400";
 }
 
 .card-time {
-  font-size: common.$md;
+  font-size: 1.125rem;
   font-family: "pretendard-400";
   margin-bottom: 52px;
 }
 
 .card-footer {
-  font-size: common.$xl;
+  font-size: 1.5rem;
   font-family: "pretendard-400";
   text-align: center;
   margin-bottom: 21px;
@@ -107,22 +106,22 @@
 .card-count {
   font-family: "pretendard-900";
   text-align: center;
-  font-size: common.$xxl;
-  color: common.$blue;
+  font-size: 2.75rem;
+  color: #19376d;
 }
 
 .notify-head {
   margin-top: 40%;
-  font-size: common.$xl;
+  font-size: 1.5rem;
   text-align: center;
   font-family: "pretendard-600";
-  color: common.$blue;
+  color: #19376d;
 }
 
 .notify-body {
   margin-top: 20px;
-  font-size: common.$lg;
+  font-size: 1.25rem;
   text-align: center;
   font-family: "pretendard-600";
-  color: common.$gray;
-}
+  color: #8a8a8a;
+}/*# sourceMappingURL=Card.css.map */

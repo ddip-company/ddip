@@ -1,4 +1,4 @@
-export const dummyBungaeList2 = [
+export const dummyBungaeList = [
   {
     id: 1,
     owner: {
@@ -8,7 +8,8 @@ export const dummyBungaeList2 = [
       nickname: "닉네임입니다"
     },
     title: "오늘 7시 성수역 클라이밍 하실 분 계신가요!!...",
-    description: "설명",
+    description:
+      "오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...",
     location: {
       country: "한국",
       city: "서울",
@@ -31,7 +32,8 @@ export const dummyBungaeList2 = [
       nickname: "닉네임입니다2"
     },
     title: "오늘 7시 성수역 클라이밍 하실 분 계신가요!!...",
-    description: "설명",
+    description:
+      "오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...",
     location: {
       country: "한국",
       city: "서울",
@@ -77,7 +79,8 @@ export const dummyBungaeList2 = [
       nickname: "닉네임입니다"
     },
     title: "오늘 7시 성수역 클라이밍 하실 분 계신가요!!...",
-    description: "설명",
+    description:
+      "오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...오늘 7시 성수역 클라이밍 하실 분 계신가요!!...",
     location: {
       country: "한국",
       city: "서울",

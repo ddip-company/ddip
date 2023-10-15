@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import "./Card.css";
+import "../styles/css/Card.css";
 import * as cardFunction from "../util/cardFunction";
+import { useNavigate } from "react-router-dom";
 
 function Card({
+  id,
   status,
   title,
   emoji,
@@ -13,6 +15,7 @@ function Card({
   numberOfParticipants,
   numberOfRecruits
 }) {
+  const navigate = useNavigate();
   const [duration, setDuration] = useState("00:00:00");
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,7 +28,10 @@ function Card({
   }, [meetingAt]);
 
   return (
-    <li className={`card-container ${status.color}`}>
+    <li
+      className={`card-container ${status.color}`}
+      onClick={() => navigate(`/bungae-detail/${id}`)} // 또는 원하는 이벤트에 따라 페이지 이동
+    >
       <div className={`card-deadline ${status.color}`}>{status.text}</div>
       <div className="card-title">{title}</div>
       <div className="card-box">

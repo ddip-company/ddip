@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
-import "./Navbar.css";
+import "../styles/css/Navbar.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../store/auth-context";
 import Modal from "./Modal";
@@ -147,7 +147,7 @@ const Navbar = () => {
             <div className="nav-btn-text">번개목록</div>
           </Link>
           {!isLoggined ? null : (
-            <Link to="/signup">
+            <Link to="/bungae-create">
               <div className="nav-mainbtn-text">번개만들기</div>
             </Link>
           )}
