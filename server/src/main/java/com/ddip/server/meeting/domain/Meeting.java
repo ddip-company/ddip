@@ -1,7 +1,9 @@
 package com.ddip.server.meeting.domain;
 
 import com.ddip.server.meeting.dto.response.MeetingResponse;
+import com.ddip.server.meetingparticipant.domain.MeetingParticipant;
 import com.ddip.server.user.domain.Users;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -12,7 +14,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -43,8 +47,8 @@ public class Meeting {
   private LocalDateTime meetingAt;
   @Column
   private Integer numberOfRecruits;
-  @Column
-  private Integer numberOfParticipants;
+  @OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
+  private List<MeetingParticipant> meetingParticipants;
   @CreatedDate
   private LocalDateTime createdAt;
   @LastModifiedDate
@@ -53,7 +57,7 @@ public class Meeting {
   @Builder
   public Meeting(Users owner, String title, String description, Location location, String openChat,
       LocalDateTime meetingAt,
-      Integer numberOfRecruits, Integer numberOfParticipants) {
+      Integer numberOfRecruits) {
     this.owner = owner;
     this.title = title;
     this.description = description;
@@ -61,7 +65,7 @@ public class Meeting {
     this.openChat = openChat;
     this.meetingAt = meetingAt;
     this.numberOfRecruits = numberOfRecruits;
-    this.numberOfParticipants = numberOfParticipants;
+    this.meetingParticipants = List.of();
   }
 
   public MeetingResponse toMeetingResponse() {
@@ -74,7 +78,7 @@ public class Meeting {
         .openChat(openChat)
         .meetingAt(meetingAt)
         .numberOfRecruits(numberOfRecruits)
-        .numberOfParticipants(numberOfParticipants)
+        .numberOfParticipants(meetingParticipants.size())
         .createdAt(createdAt)
         .build();
   }
@@ -93,5 +97,9 @@ public class Meeting {
 
   public boolean isOwner(Users owner) {
     return owner.equals(this.owner);
+  }
+
+  public void participate(Users participant) {
+    meetingParticipants.add(MeetingParticipant.builder().participant(participant).meeting(this).build());
   }
 }

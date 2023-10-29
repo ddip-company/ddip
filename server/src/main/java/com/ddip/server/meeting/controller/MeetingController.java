@@ -30,10 +30,10 @@ public class MeetingController {
   private final MeetingService meetingService;
 
   @PostMapping
-  public void createMeeting(
+  public ResponseEntity<MeetingResponse> createMeeting(
       @RequestBody @Valid CreateMeeting createMeeting,
       UserSession userSession) {
-    meetingService.createMeeting(userSession, createMeeting);
+    return ResponseEntity.ok().body(meetingService.createMeeting(userSession, createMeeting));
   }
 
   @GetMapping
@@ -54,6 +54,13 @@ public class MeetingController {
       UserSession userSession
   ) {
     meetingService.updateMeeting(userSession, id, updateMeeting);
+  }
+
+  @PostMapping("/{id}")
+  public void participate(
+      @PathVariable Long id,
+      UserSession userSession) {
+    meetingService.participate(userSession, id);
   }
 
   @DeleteMapping("/{id}")
