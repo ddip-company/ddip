@@ -42,4 +42,8 @@ public class MeetingParticipant {
     this.participant = participant;
     this.meeting = meeting;
   }
+
+  public boolean equalsParticipant(Users user) {
+    return participant.equals(user);
+  }
 }

@@ -101,6 +101,9 @@ public class Meeting {
   }
 
   public void participate(Users participant) {
+    if (meetingParticipants.stream().anyMatch(i -> i.equalsParticipant(participant))) {
+      throw new RuntimeException("이미 참가한 띱에는 참가할 수 없습니다.");
+    }
     meetingParticipants.add(MeetingParticipant.builder().participant(participant).meeting(this).build());
   }
 }
