@@ -56,7 +56,7 @@ public class MeetingController {
     meetingService.updateMeeting(userSession, id, updateMeeting);
   }
 
-  @PostMapping("/{id}")
+  @PostMapping("/{id}/participate")
   public void participate(
       @PathVariable Long id,
       UserSession userSession) {
