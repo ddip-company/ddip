@@ -47,7 +47,7 @@ public class MeetingService {
         .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
     Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
         + "않는 번개입니다."));
-    meeting.update(owner, request.getTitle(), request.getDescription(), request.getAddress().toLocation(),
+    meeting.update(owner, request.getTitle(), request.getDescription(), request.getAddress().toLocation(), request.getOpenChat(),
         request.getMeetingAt(), request.getNumberOfRecruits());
   }
 

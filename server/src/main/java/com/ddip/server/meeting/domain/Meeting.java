@@ -83,7 +83,7 @@ public class Meeting {
         .build();
   }
 
-  public void update(Users owner, String title, String description, Location location, LocalDateTime meetingAt,
+  public void update(Users owner, String title, String description, Location location, String openChat, LocalDateTime meetingAt,
       Integer numberOfRecruits) {
     if (!owner.equals(this.owner)) {
       throw new SecurityException("번개의 주인만 수정이 가능합니다.");
@@ -91,6 +91,7 @@ public class Meeting {
     this.title = title;
     this.description = description;
     this.location = location;
+    this.openChat = openChat;
     this.meetingAt = meetingAt;
     this.numberOfRecruits = numberOfRecruits;
   }

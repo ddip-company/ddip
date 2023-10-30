@@ -17,17 +17,19 @@ public class UpdateMeeting {
   private String description;
   @NotNull(message = "주소가 필요합니다")
   private Address address;
+  private String openChat;
   @NotNull(message = "번개 시간이 필요합니다.")
   private LocalDateTime meetingAt;
   @NotNull(message = "번개 모집인원이 필요합니다.")
   private Integer numberOfRecruits;
 
   @Builder
-  public UpdateMeeting(Long id, String title, String description, Address address, LocalDateTime meetingAt,
+  public UpdateMeeting(Long id, String title, String description, Address address, String openChat, LocalDateTime meetingAt,
       Integer numberOfRecruits) {
     this.title = title;
     this.description = description;
     this.address = address;
+    this.openChat = openChat;
     this.meetingAt = meetingAt;
     this.numberOfRecruits = numberOfRecruits;
   }
