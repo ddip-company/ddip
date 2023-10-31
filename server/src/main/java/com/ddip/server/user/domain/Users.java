@@ -3,6 +3,7 @@ package com.ddip.server.user.domain;
 import static com.ddip.server.user.service.JwtService.buildJwt;
 
 import com.ddip.server.meeting.domain.Meeting;
+import com.ddip.server.meetingparticipant.domain.MeetingParticipant;
 import com.ddip.server.user.dto.request.Login;
 import com.ddip.server.user.dto.response.LoginUser;
 import com.ddip.server.user.dto.response.User;
@@ -44,7 +45,8 @@ public class Users {
   private Boolean isConfirm;
   @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Meeting> meetings;
-  
+  @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<MeetingParticipant> meetingParticipants;
   @CreatedDate
   private LocalDateTime createdAt;
   @LastModifiedDate
