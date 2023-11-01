@@ -1,19 +1,67 @@
+# default
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-    datasource:
-      url: jdbc:h2:mem:ddip
-      username: dltntnqo
-      password:
-      driver-class-name: org.h2.Driver
+  profiles:
+    active: prod
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://ddip-backend.crpxenqbjazy.ap-northeast-2.rds.amazonaws.com:3306/ddip_backend?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: TAEMO
+    password: Elq901231
+  properties:
+    hibernate:
+      show_sql: false
+      use_sql_comments: false
+      format_sql: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  redis:
+    host: localhost
+    port: 6379
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${smtp-username}
+    password: ${smtp-password}
     properties:
-      hibernate:
-        show_sql: true
-        use_sql_comments: true
-        format_sql: true
-  
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+jwt:
+  key: rTPmA9Sgk+Q1XwuJbG7E6xFFUhQpdi+al5iyPnRTK/Q=
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/ddip?characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+  properties:
+    hibernate:
+      show_sql: true
+      use_sql_comments: true
+      format_sql: true
+  jpa:
+    hibernate:
+      show_sql: true
+      use_sql_comments: true
+      format_sql: true
+      ddl-auto: update
+
   redis:
     host: localhost
     port: 6379

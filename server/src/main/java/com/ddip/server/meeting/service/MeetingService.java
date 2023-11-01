@@ -24,10 +24,11 @@ public class MeetingService {
   private final UserRepository userRepository;
 
   @Transactional
-  public void createMeeting(UserSession userSession, CreateMeeting request) {
+  public MeetingResponse createMeeting(UserSession userSession, CreateMeeting request) {
     Users owner = userRepository.findById(userSession.getId())
         .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
-    meetingRepository.save(request.toMeeting(owner));
+    Meeting meeting = meetingRepository.save(request.toMeeting(owner));
+    return meeting.toMeetingResponse();
   }
 
   public List<MeetingResponse> getMeetings() {
@@ -46,8 +47,26 @@ public class MeetingService {
         .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
     Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
         + "않는 번개입니다."));
-    meeting.update(owner, request.getTitle(), request.getDescription(), request.getAddress().toLocation(),
+    meeting.update(owner, request.getTitle(), request.getDescription(), request.getAddress().toLocation(), request.getOpenChat(),
         request.getMeetingAt(), request.getNumberOfRecruits());
+  }
+
+  @Transactional
+  public void participate(UserSession userSession, Long id) {
+    Users participant = userRepository.findById(userSession.getId())
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+    Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
+        + "않는 번개입니다."));
+    meeting.participate(participant);
+  }
+
+  @Transactional
+  public void leave(UserSession userSession, Long id) {
+    Users leaver = userRepository.findById(userSession.getId())
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+    Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
+        + "않는 번개입니다."));
+    meeting.leave(leaver);
   }
 
   @Transactional

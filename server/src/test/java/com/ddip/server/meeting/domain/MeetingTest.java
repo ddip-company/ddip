@@ -23,12 +23,11 @@ class MeetingTest {
         .openChat("openChat")
         .meetingAt(LocalDateTime.now())
         .numberOfRecruits(5)
-        .numberOfParticipants(0)
         .build();
 
     var notOwner = Users.builder().id(2l).email("test@test.com").nickname("owner").password("password").build();
     assertThatThrownBy(
-        () -> meeting.update(notOwner, "updatedTitle", "description", null, LocalDateTime.now(), 5)).isInstanceOf(
+        () -> meeting.update(notOwner, "updatedTitle", "description", null, null, LocalDateTime.now(), 5)).isInstanceOf(
         SecurityException.class);
 
   }
