@@ -3,6 +3,7 @@ package com.ddip.server.meeting.domain;
 import com.ddip.server.meeting.dto.response.MeetingResponse;
 import com.ddip.server.meetingparticipant.domain.MeetingParticipant;
 import com.ddip.server.user.domain.Users;
+import com.ddip.server.user.dto.response.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -79,6 +80,7 @@ public class Meeting {
         .openChat(openChat)
         .meetingAt(meetingAt)
         .numberOfRecruits(numberOfRecruits)
+        .participantIds(meetingParticipants.stream().map(MeetingParticipant::getParticipant).map(Users::toUser).map(User::getId).toList())
         .numberOfParticipants(meetingParticipants.size())
         .createdAt(createdAt)
         .build();
@@ -104,6 +106,12 @@ public class Meeting {
   public void participate(Users participant) {
     if (isParticipatedMember(participant)) {
       throw new RuntimeException("이미 참가한 띱에는 참가할 수 없습니다.");
+    }
+    if (numberOfRecruits == meetingParticipants.size()) {
+      throw new RuntimeException("모집인원이 마감되었습니다.");
+    }
+    if (LocalDateTime.now().isAfter(meetingAt)) {
+      throw new RuntimeException("마감일시가 지났습니다");
     }
     meetingParticipants.add(MeetingParticipant.builder().participant(participant).meeting(this).build());
   }

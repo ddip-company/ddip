@@ -80,4 +80,10 @@ public class MeetingService {
     }
     meetingRepository.delete(meeting);
   }
+
+  public MeetingResponse getMeeting(Long id) {
+    Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
+        + "않는 번개입니다."));
+    return meeting.toMeetingResponse();
+  }
 }

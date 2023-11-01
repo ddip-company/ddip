@@ -10,8 +10,8 @@ spring:
   datasource:
     url: jdbc:mysql://ddip-backend.crpxenqbjazy.ap-northeast-2.rds.amazonaws.com:3306/ddip_backend?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: 
-    password: 
+    username: ${db-username}
+    password: ${db-password}
   properties:
     hibernate:
       show_sql: false

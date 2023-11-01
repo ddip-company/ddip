@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/meeting")
+@RequestMapping("/meetings")
 @RequiredArgsConstructor
 public class MeetingController {
 
@@ -39,6 +39,11 @@ public class MeetingController {
   @GetMapping
   public ResponseEntity<List<MeetingResponse>> getMeetings() {
     return ResponseEntity.ok().body(meetingService.getMeetings());
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<MeetingResponse> getMeeting(@PathVariable Long id) {
+    return ResponseEntity.ok().body(meetingService.getMeeting(id));
   }
 
   @GetMapping("/search")
