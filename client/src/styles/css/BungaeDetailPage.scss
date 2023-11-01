@@ -1,0 +1,85 @@
+@use "../base/common";
+
+.bungaeDetail-header {
+  width: 50%;
+  margin-bottom: 30px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.bungaeDetail-title {
+  font-size: common.$xl;
+  font-family: "pretendard-600";
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.bungaeDetail-headerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 2px solid common.$gray;
+}
+
+.bungae-owner-date {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: common.$gray;
+  .bungae-owner {
+    padding-right: 16px;
+    border-right: 2px solid black;
+    color: common.$blue;
+  }
+}
+
+.bungaeDetail-InfoContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.bungaeDetail-InfoContentWrapper {
+  display: flex;
+  gap: 20px;
+  font-family: "pretendard-400";
+  font-size: common.$md;
+  margin-top: 20px;
+
+  > .bungae-content-title {
+    color: common.$gray;
+  }
+
+  > a {
+    color: common.$lightblue;
+    text-decoration: underline;
+  }
+}
+
+.button-Wrapper {
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: common.$lg;
+  text-align: center;
+}
+
+.bungaeDetail-IntroductionContent {
+  width: 50%;
+  margin-top: 40px;
+  margin: 0 auto;
+
+  > .bungae-introduction-title {
+    font-family: "pretendard-600";
+    font-size: common.$lg;
+    padding-bottom: 24px;
+    border-bottom: 2px solid common.$gray;
+    margin-bottom: 30px;
+  }
+  > .bungae-introduction-description {
+    line-height: 1.3;
+    font-size: common.$md;
+  }
+}

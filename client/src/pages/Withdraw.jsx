@@ -5,8 +5,8 @@ import { loginFormSchema } from "../util/authValidation";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
-import "./Withdraw.css";
-import "../component/Input.css";
+import "../styles/css/Withdraw.css";
+import "../styles/css/Input.css";
 import Button from "../component/Button";
 
 function Withdraw() {

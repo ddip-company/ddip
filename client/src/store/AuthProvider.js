@@ -21,22 +21,29 @@ const AuthProvider = (props) => {
   const [token, setToken] = useState(initialToken);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
 
+  const updateUserInfo = (updatedInfo) => {
+    setUserInfo(updatedInfo);
+  };
+
   const isLoggined = !!token;
 
   const loginHandler = (email, password, tryCatch) => {
     authApi
       .login(email, password)
       .then((res) => {
-        const { email, nickname, jwt } = res.data;
+        const { emoji, email, nickname, jwt } = res.data;
         localStorage.setItem("token", jwt);
-        localStorage.setItem("userInfo", JSON.stringify({ email, nickname }));
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({ emoji, email, nickname })
+        );
 
         const expiration = new Date();
         expiration.setHours(expiration.getHours() + 1);
         localStorage.setItem("expiration", expiration.toISOString());
 
         setToken(jwt);
-        setUserInfo({ email, nickname });
+        setUserInfo({ emoji, email, nickname });
       })
       .then(() => {
         tryCatch.try();
@@ -83,6 +90,7 @@ const AuthProvider = (props) => {
         token,
         isLoggined,
         userInfo,
+        updateUserInfo,
         loginHandler,
         logoutHandler,
         withdrawHandler

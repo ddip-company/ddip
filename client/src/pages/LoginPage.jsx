@@ -5,8 +5,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../store/auth-context";
 import { loginFormSchema } from "../util/authValidation";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
-import "../component/Input.css";
-import "./LoginPage.css";
+import "../styles/css/Input.css";
+import "../styles/css/LoginPage.css";
 import Button from "../component/Button";
 
 const LoginPage = () => {

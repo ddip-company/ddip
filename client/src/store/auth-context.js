@@ -4,6 +4,7 @@ export const AuthContext = createContext({
   token: null,
   isLoggedIn: false,
   userInfo: { emoji: "", email: "", nickname: "" },
+  updateUserInfo: { emoji: "", email: "", nickname: "" },
   loginHandler: () => {},
   logoutHandler: () => {},
   withdrawHandler: () => {}

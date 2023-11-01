@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
 import { ProfilePageTabMenu as tab } from "../static/sortTab";
-import { dummyBungaeList2 } from "../static/dummy/bungaeList";
+import { dummyBungaeList } from "../static/dummy/bungaeList";
 import UserInfo from "../component/UserInfo";
 import UserBungaeList from "../component/UserBungaeList";
 import Navbar from "../component/Navbar";
@@ -16,7 +16,7 @@ function Mypage() {
   const authActions = useContext(AuthContext);
 
   useEffect(() => {
-    setBungaeList(dummyBungaeList2);
+    setBungaeList(dummyBungaeList);
   }, []);
 
   const handleSubmitLogout = () => {

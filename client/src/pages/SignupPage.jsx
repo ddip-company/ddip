@@ -6,7 +6,7 @@ import { formSchema } from "../util/authValidation";
 import * as authApi from "../api/auth";
 import { emojiList } from "../static/dummy/emojiList";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
-import "./SignupPage.css";
+import "../styles/css/SignupPage.css";
 import Button from "../component/Button";
 import Input from "../component/Input";
 
@@ -62,10 +62,9 @@ const SignUp = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
-
     const emoji = getRandomEmoji();
     const { email, nickname, password } = data;
+
     try {
       const res = await authApi.signup(email, nickname, password, emoji);
       if (res.status === 200) {

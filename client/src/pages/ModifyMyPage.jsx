@@ -13,11 +13,12 @@ import { useContext } from "react";
 import ModifyEmoji from "../component/ModifyEmoji";
 
 function ModifyMyPage() {
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, updateUserInfo } = useContext(AuthContext);
   const [emoji, setEmoji] = useState(userInfo ? userInfo.emoji : "");
   const handleClickRandomEmoji = () => {
     const randomEmoji = authAction.getRandomEmoji();
     setEmoji(randomEmoji);
+    console.log(randomEmoji);
   };
   const navigate = useNavigate();
   const [uniqueNickname, setUniqueNickname] = useState(null);
@@ -34,6 +35,8 @@ function ModifyMyPage() {
   });
 
   const nicknameValue = watch("nickname");
+  const newPasswordValue = watch("password");
+  const emojiValue = emoji;
 
   useEffect(() => {
     setUniqueNickname(null);
@@ -63,14 +66,16 @@ function ModifyMyPage() {
       });
   };
 
+  const token = localStorage.getItem("token");
+
   const modifyEmojiHandler = async () => {
     try {
-      const randomEmoji = authAction.getRandomEmoji();
-      setEmoji(randomEmoji);
-      const res = await authApi.changeEmoji(randomEmoji); // 이모지 변경 요청
+      const res = await authApi.updateUser({ emoji: emojiValue }, token);
       if (res.status === 200) {
+        const updatedInfo = { ...userInfo, emoji: emojiValue };
+        updateUserInfo(updatedInfo);
         console.log("이모지 변경이 완료되었습니다.");
-        navigate("/mypage");
+        navigate(`/mypage/${userInfo.nickname}`);
       }
     } catch (error) {
       console.error("이모지 변경 에러:", error);
@@ -79,10 +84,13 @@ function ModifyMyPage() {
 
   const nicknameChangeHandler = async () => {
     try {
-      const res = await authApi.changeNickname(nicknameValue);
+      const res = await authApi.updateUser({ nickname: nicknameValue }, token);
       if (res.status === 200) {
+        const updatedInfo = { ...userInfo, nickname: nicknameValue };
+        updateUserInfo(updatedInfo);
         console.log("닉네임 변경이 완료되었습니다.");
-        navigate("/mypage");
+
+        navigate(`/mypage/${nicknameValue}`);
       }
     } catch (error) {
       console.error("닉네임 변경 에러:", error);
@@ -90,15 +98,16 @@ function ModifyMyPage() {
   };
 
   const changePasswordHandler = async () => {
-    const newPasswordValue = watch("password");
     try {
-      const res = await authApi.changePassword(
-        userInfo.email,
-        newPasswordValue
+      const res = await authApi.updateUser(
+        { password: newPasswordValue },
+        token
       );
       if (res.status === 200) {
+        const updatedInfo = { ...userInfo, password: newPasswordValue };
+        updateUserInfo(updatedInfo);
         console.log("비밀번호 변경이 완료되었습니다.");
-        navigate("/mypage");
+        navigate(`/mypage/${userInfo.nickname}`);
       }
     } catch (error) {
       console.error("비밀번호 변경 에러:", error);
@@ -121,8 +130,8 @@ function ModifyMyPage() {
           <div className="signupPassword-container">
             <ModifyEmoji
               emoji={emoji}
-              handleClickRandomEmoji={handleClickRandomEmoji}
-              handleClickChangeEmoji={modifyEmojiHandler}
+              onRandomClick={handleClickRandomEmoji}
+              onEmojiChangeClick={modifyEmojiHandler}
             />
           </div>
           <div className="signupPassword-container">

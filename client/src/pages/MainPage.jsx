@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-import "./MainPage.css";
-import { dummyBungaeList2 } from "../static/dummy/bungaeList";
+import "../styles/css/MainPage.css";
+import { dummyBungaeList } from "../static/dummy/bungaeList";
 import BungaeListContent from "../component/BungaeListContent";
 
 const MainPage = () => {
@@ -9,8 +9,8 @@ const MainPage = () => {
   const [newBungaeList, setNewBungaeList] = useState([]);
 
   useEffect(() => {
-    setImminentBungaeList(dummyBungaeList2);
-    setNewBungaeList(dummyBungaeList2);
+    setImminentBungaeList(dummyBungaeList);
+    setNewBungaeList(dummyBungaeList);
   }, []);
 
   const makeFilledBungaeList = (bungaeList) => {

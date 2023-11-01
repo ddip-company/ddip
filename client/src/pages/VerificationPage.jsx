@@ -3,9 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { emailFormSchema } from "../util/authValidation";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as authApi from "../api/auth";
-import "../component/Input.css";
+import "../styles/css/Input.css";
 import Button from "../component/Button";
-import "./VerificationPage.css";
+import "../styles/css/VerificationPage.css";
 
 function VerificationPage() {
   const navigate = useNavigate();

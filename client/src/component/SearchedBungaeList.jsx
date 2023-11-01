@@ -1,6 +1,6 @@
 import TabMenu from "./TabMenu";
 import BungaeListContent from "./BungaeListContent";
-import "../pages/SearchPage.css";
+import "../styles/css/SearchPage.css";
 
 function SearchedBungaeList({ count, sortBy, onSwitch, tab, bungaeList }) {
   return (

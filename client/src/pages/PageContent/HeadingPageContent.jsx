@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../component/Navbar.css";
+import "../../styles/css/Navbar.css";
 
 const HeadingPageContent = () => {
   return (

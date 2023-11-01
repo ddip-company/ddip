@@ -1,4 +1,4 @@
-import "./TabMenu.css";
+import "../styles/css/TabMenu.css";
 import { useState } from "react";
 
 function TabMenu({ sortBy, onSwitch, tab }) {
