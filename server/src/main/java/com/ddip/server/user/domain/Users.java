@@ -45,7 +45,7 @@ public class Users {
   private Boolean isConfirm;
   @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Meeting> meetings;
-  @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy = "participant", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<MeetingParticipant> meetingParticipants;
   @CreatedDate
   private LocalDateTime createdAt;

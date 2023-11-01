@@ -63,6 +63,13 @@ public class MeetingController {
     meetingService.participate(userSession, id);
   }
 
+  @PostMapping("/{id}/leave")
+  public void leave(
+      @PathVariable Long id,
+      UserSession userSession) {
+    meetingService.leave(userSession, id);
+  }
+
   @DeleteMapping("/{id}")
   public void deleteMeeting(@PathVariable Long id, UserSession userSession) {
     meetingService.deleteMeeting(userSession, id);

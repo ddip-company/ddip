@@ -46,4 +46,28 @@ public class MeetingParticipant {
   public boolean equalsParticipant(Users user) {
     return participant.equals(user);
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    MeetingParticipant that = (MeetingParticipant) o;
+
+    if (!participant.equals(that.participant)) {
+      return false;
+    }
+    return meeting.equals(that.meeting);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = participant != null ? participant.hashCode() : 0;
+    result = 31 * result + (meeting != null ? meeting.hashCode() : 0);
+    return result;
+  }
 }

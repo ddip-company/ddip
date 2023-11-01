@@ -61,6 +61,15 @@ public class MeetingService {
   }
 
   @Transactional
+  public void leave(UserSession userSession, Long id) {
+    Users leaver = userRepository.findById(userSession.getId())
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+    Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 "
+        + "않는 번개입니다."));
+    meeting.leave(leaver);
+  }
+
+  @Transactional
   public void deleteMeeting(UserSession userSession, Long id) {
     Users owner = userRepository.findById(userSession.getId())
         .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));

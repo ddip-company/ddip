@@ -17,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -47,7 +48,7 @@ public class Meeting {
   private LocalDateTime meetingAt;
   @Column
   private Integer numberOfRecruits;
-  @OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<MeetingParticipant> meetingParticipants;
   @CreatedDate
   private LocalDateTime createdAt;
@@ -101,9 +102,39 @@ public class Meeting {
   }
 
   public void participate(Users participant) {
-    if (meetingParticipants.stream().anyMatch(i -> i.equalsParticipant(participant))) {
+    if (isParticipatedMember(participant)) {
       throw new RuntimeException("이미 참가한 띱에는 참가할 수 없습니다.");
     }
     meetingParticipants.add(MeetingParticipant.builder().participant(participant).meeting(this).build());
+  }
+
+  public void leave(Users leaver) {
+    if (!isParticipatedMember(leaver)) {
+      throw new RuntimeException("참가하지 않은 띱입니다.");
+    }
+    meetingParticipants.remove(MeetingParticipant.builder().participant(leaver).meeting(this).build());
+  }
+
+  private boolean isParticipatedMember(Users leaver) {
+    return meetingParticipants.stream().anyMatch(i -> i.equalsParticipant(leaver));
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Meeting meeting = (Meeting) o;
+
+    return Objects.equals(id, meeting.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return id != null ? id.hashCode() : 0;
   }
 }
