@@ -24,6 +24,14 @@
   width: 100%;
 }
 
+.width {
+  width: 50%;
+}
+
 .margin {
   margin-left: 5px;
+}
+
+.margin2 {
+  margin-top: 20px;
 }/*# sourceMappingURL=Button.css.map */

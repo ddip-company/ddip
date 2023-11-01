@@ -4,10 +4,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { formSchema } from "../util/authValidation";
 import * as authApi from "../api/auth";
+import { emojiList } from "../static/dummy/emojiList";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
 import "./SignupPage.css";
-import "../component/Input.css";
 import Button from "../component/Button";
+import Input from "../component/Input";
+
+const getRandomEmoji = () => {
+  const randomIndex = Math.floor(Math.random() * emojiList.length);
+  return emojiList[randomIndex];
+};
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -58,14 +64,15 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     console.log(data);
 
+    const emoji = getRandomEmoji();
     const { email, nickname, password } = data;
     try {
-      const res = await authApi.signup(email, nickname, password);
+      const res = await authApi.signup(email, nickname, password, emoji);
       if (res.status === 200) {
         navigate("/email-auth", { state: emailValue });
       }
     } catch (error) {
-      console.log(error);
+      console.log("Signup failed:", error);
     }
   };
 
@@ -81,33 +88,22 @@ const SignUp = () => {
           className="signup-form"
         >
           <h1 className="signup-title">회원가입</h1>
-          <label className="signup-label" htmlFor="email_id">
-            E-Mail
-          </label>
-          <input
-            className="authInput"
+          <Input
+            label="E-Mail"
             name="email"
             id="email_id"
             placeholder="이메일을 입력하세요."
-            {...register("email")}
+            register={register}
+            errors={errors.email}
           />
-          {errors.email && (
-            <p className="signup-errors">{errors.email.message}</p>
-          )}
-          <label className="signup-label" htmlFor="name_id">
-            Nick Name
-          </label>
-          <input
-            className="authInput"
-            type="text"
+          <Input
+            label="Nick Name"
             name="nickname"
             id="name_id"
             placeholder="닉네임을 입력하세요."
-            {...register("nickname")}
+            register={register}
+            errors={errors.nickname}
           />
-          {errors.nickname && (
-            <p className="signup-errors">{errors.nickname.message}</p>
-          )}
           <Button
             styles="lightblue"
             fullWidth="full-width"
@@ -117,34 +113,24 @@ const SignUp = () => {
           </Button>
           {nicknameCheckMsg && <p className="signup-errors">{checkMsg}</p>}
           <div className="signupPassword-container">
-            <label className="signup-label" htmlFor="password_id">
-              Password
-            </label>
-            <input
-              className="authInput"
-              type="password"
+            <Input
+              label="Password"
               name="password"
               id="password_id"
-              placeholder="비밀번호를 입력하세요."
-              {...register("password")}
-            />
-            {errors.password && (
-              <p className="signup-errors">{errors.password.message}</p>
-            )}
-            <label className="signup-label" htmlFor="confirm_id">
-              Password Confirm
-            </label>
-            <input
-              className="authInput"
               type="password"
+              placeholder="비밀번호를 입력하세요."
+              register={register}
+              errors={errors.password}
+            />
+            <Input
+              label="Password Confirm"
               name="passwordConfirm"
               id="confirm_id"
+              type="password"
               placeholder="비밀번호를 한번 더 입력하세요."
-              {...register("passwordConfirm")}
+              register={register}
+              errors={errors.passwordConfirm}
             />
-            {errors.passwordConfirm && (
-              <p className="signup-errors">{errors.passwordConfirm.message}</p>
-            )}
           </div>
           <Button
             styles="blue"

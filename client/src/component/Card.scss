@@ -1,5 +1,11 @@
 @use "../styles/base/common";
 
+.card-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .card-container {
   width: 367px;
   height: 391px;
@@ -10,7 +16,7 @@
 }
 
 .card-container.statusGray {
-  filter: blur(1px);
+  filter: blur(1.5px);
   background-color: rgb(230, 229, 229);
 }
 

@@ -6,12 +6,13 @@ const Button = ({
   fullWidth,
   outline,
   margin,
+  margin2,
   type = "submit",
   onClick
 }) => {
   return (
     <button
-      className={`Button ${styles} ${fullWidth} ${outline} ${margin}`}
+      className={`Button ${styles} ${fullWidth} ${outline} ${margin} ${margin2}`}
       type={type}
       onClick={onClick}
     >

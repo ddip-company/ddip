@@ -19,3 +19,19 @@ export const nicknameDuplication = (nickname) => {
 export const withdraw = (email, password) => {
   return http.delete("/auth/withdraw", { data: { email, password } });
 };
+
+export const changeNickname = (nickname) => {
+  return http.patch(`/auth/users?nickname=${nickname}`);
+};
+
+export const changePassword = (nickname, password) => {
+  return http.patch(`/auth/users?nickname=${nickname}`, { password });
+};
+
+export const changeEmoji = (nickname, emoji) => {
+  return http.patch(`/auth/users?nickname=${nickname}`, { emoji });
+};
+
+// export const changePassword = (email, password) => {
+//   return http.patch("/auth/password", { email, password });
+// };
