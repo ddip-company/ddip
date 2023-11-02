@@ -3,6 +3,11 @@
   border-radius: 5px;
   border: 1px solid #eee;
   font-family: "pretendard-400";
+  transition: background-color 0.3s;
+}
+
+.Button:hover {
+  background-color: #2d80b3;
 }
 
 .blue {
@@ -34,4 +39,12 @@
 
 .margin2 {
   margin-top: 20px;
+}
+
+.height {
+  height: 50px;
+}
+
+.full-height {
+  height: 100%;
 }/*# sourceMappingURL=Button.css.map */

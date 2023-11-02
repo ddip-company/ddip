@@ -26,6 +26,7 @@
 
 .login-label {
   font-family: "pretendard-300";
+  margin-bottom: 10px;
 }
 
 .login-errors {

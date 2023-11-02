@@ -1,0 +1,47 @@
+@use "../base/common";
+
+.LocationWrapper {
+  width: 100%;
+
+  > .label-wrapper {
+    margin-bottom: 6px;
+    font-family: "pretendard-600";
+  }
+}
+
+.LocationBox {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  font-family: "pretendard-400";
+  gap: 10px;
+
+  > .location-display-box {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0px 14px;
+
+    > p {
+      color: common.$gray;
+    }
+    > p.active {
+      color: common.$gray;
+    }
+  }
+}
+
+// .LocationButton {
+//   outline: none;
+//   border: 1px solid black;
+//   border-left: 0px;
+//   border-top-right-radius: 5px;
+//   border-bottom-right-radius: 5px;
+//   width: 120px;
+//   height: 100%;
+//   background: common.$blue;
+//   font-family: "Pretendard-300";
+// }

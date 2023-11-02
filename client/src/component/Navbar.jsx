@@ -1,21 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "./UI/LogoutButton";
 import "../styles/css/Navbar.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../store/auth-context";
-import Modal from "./Modal";
-import Button from "./Button";
+import Modal from "./UI/Modal";
+import Button from "./UI/Button";
 import { localList } from "../static/dummy/localList";
-
-// useContext는 전역으로 관리하는 데이터를 받아올 수 있게 하는 함수
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { isLoggined, userInfo } = useContext(AuthContext);
   const [modalOpen, setModalOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   const [selectedLocal, setSelectedLocal] = useState({
     sido: "",
-    sigugun: ""
+    sigugun: "",
+    gu: ""
   });
   const { sido, sigugun } = selectedLocal;
   const localIsSelected = sido !== "" && sigugun !== "";
@@ -23,31 +23,66 @@ const Navbar = () => {
   const [currentSigugun, setCurrentSigugun] = useState(null);
 
   const handleSearch = () => {
-    navigate("/bungae-search");
+    const data = {
+      keyword: inputValue,
+      country: "",
+      city: selectedLocal.sido,
+      state: selectedLocal.sigugun,
+      street: selectedLocal.gu,
+      zipCode: "",
+      detail: ""
+    };
+    navigate("/bungae-search", { state: data });
   };
 
   const openModal = () => {
     setModalOpen(true);
   };
+
   const closeModal = () => {
     setModalOpen(false);
   };
+
   const selectSidoHandler = (idx, text) => {
     setCurrentSido(idx);
     setSelectedLocal({ sido: text, sigugun: "" });
     setCurrentSigugun((prev) => ({ ...prev, sigugun: null }));
   };
+
   const selectSigugunHandler = (idx, text) => {
-    setCurrentSigugun(idx);
-    setSelectedLocal((prev) => ({ ...prev, sigugun: text }));
+    const sigugunParts = text.split(" ");
+
+    if (sigugunParts.length > 1) {
+      // 띄어쓰기가 포함된 경우
+      setSelectedLocal((prev) => ({
+        sido: prev.sido, // 시도는 그대로 유지
+        sigugun: sigugunParts[0], // 첫 번째 부분을 시군으로 설정
+        gu: sigugunParts.slice(1).join(" ") // 나머지 부분을 구로 설정
+      }));
+    } else {
+      // 띄어쓰기가 없는 경우
+      setSelectedLocal((prev) => ({
+        sido: prev.sido, // 시도는 그대로 유지
+        sigugun: text, // 그냥 선택된 시군으로 설정
+        gu: "" // 구는 빈 문자열로 설정
+      }));
+    }
   };
+
   const resetSelectionHandler = () => {
     setCurrentSido(0);
     setCurrentSigugun(null);
     setSelectedLocal({
       sido: "",
-      sigugun: ""
+      sigugun: "",
+      gu: ""
     });
+  };
+
+  const handleInputKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -61,7 +96,6 @@ const Navbar = () => {
             height="50px"
           />
         </Link>
-
         <div className="nav-searchBar">
           <img
             className="searchImg"
@@ -71,6 +105,9 @@ const Navbar = () => {
           <input
             className="nav-input"
             placeholder="어떤 번개를 찾으시나요?"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={handleInputKeyPress}
           ></input>
         </div>
         <div className="nav-local" onClick={openModal}>
@@ -86,7 +123,7 @@ const Navbar = () => {
         </Button>
         <div className="local-selected">
           {localIsSelected ? (
-            <p className="selected">{`${sido} ${sigugun}`}</p>
+            <p className="selected">{`${sido} ${sigugun} ${selectedLocal.gu}`}</p>
           ) : null}
         </div>
         <Modal isOpen={modalOpen} onClose={closeModal}>
@@ -143,7 +180,7 @@ const Navbar = () => {
       </div>
       <div className="nav-containerRight">
         <div className="nav-btn">
-          <Link to="/">
+          <Link to="/bungae-list">
             <div className="nav-btn-text">번개목록</div>
           </Link>
           {!isLoggined ? null : (
@@ -151,9 +188,13 @@ const Navbar = () => {
               <div className="nav-mainbtn-text">번개만들기</div>
             </Link>
           )}
-          {!isLoggined ? null : (
+          {!isLoggined ? (
+            <Link to="/guide">
+              <div className="nav-btn-text">이용안내</div>
+            </Link>
+          ) : (
             <Link to={`/mypage/${userInfo.nickname}`}>
-              <span className="nav-btn-text">마이페이지</span>
+              <div className="nav-btn-text">마이페이지</div>
             </Link>
           )}
           {!isLoggined ? (

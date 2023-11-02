@@ -18,6 +18,10 @@ function Card({
   const navigate = useNavigate();
   const [duration, setDuration] = useState("00:00:00");
   useEffect(() => {
+    if (status.text === "모집마감") {
+      setDuration("00:00:00");
+      return;
+    }
     const interval = setInterval(() => {
       const newDuration = cardFunction.updateRemainingTime(meetingAt, interval);
       setDuration(newDuration);
@@ -25,12 +29,12 @@ function Card({
     return () => {
       clearInterval(interval);
     };
-  }, [meetingAt]);
+  }, [meetingAt, status.text]);
 
   return (
     <li
       className={`card-container ${status.color}`}
-      onClick={() => navigate(`/bungae-detail/${id}`)} // 또는 원하는 이벤트에 따라 페이지 이동
+      onClick={() => navigate(`/bungae-detail/${id}`)}
     >
       <div className={`card-deadline ${status.color}`}>{status.text}</div>
       <div className="card-title">{title}</div>

@@ -8,7 +8,7 @@
 }
 
 .bungaeDetail-title {
-  font-size: common.$xl;
+  font-size: common.$xll;
   font-family: "pretendard-600";
   margin-bottom: 24px;
   line-height: 1.3;
@@ -26,10 +26,12 @@
   align-items: center;
   gap: 16px;
   color: common.$gray;
+  font-family: "pretendard-500";
+  font-size: common.$md;
   .bungae-owner {
     padding-right: 16px;
     border-right: 2px solid black;
-    color: common.$blue;
+    color: common.$darkblue;
   }
 }
 
@@ -58,7 +60,7 @@
   }
 }
 
-.button-Wrapper {
+.button-wrapper {
   align-self: flex-start;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -66,14 +68,14 @@
   text-align: center;
 }
 
-.bungaeDetail-IntroductionContent {
+.bungaeDetail-introductionContent {
   width: 50%;
   margin-top: 40px;
   margin: 0 auto;
 
   > .bungae-introduction-title {
     font-family: "pretendard-600";
-    font-size: common.$lg;
+    font-size: common.$xl;
     padding-bottom: 24px;
     border-bottom: 2px solid common.$gray;
     margin-bottom: 30px;
@@ -81,5 +83,22 @@
   > .bungae-introduction-description {
     line-height: 1.3;
     font-size: common.$md;
+    font-family: "pretendard-400";
   }
+}
+
+.error-message {
+  color: common.$orange;
+  font-family: "pretendard-600";
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: common.$orange;
+  margin-bottom: 10px;
+  font-family: "pretendard-600";
+  font-size: 60px;
 }

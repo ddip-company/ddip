@@ -3,7 +3,7 @@ import { createContext } from "react";
 export const AuthContext = createContext({
   token: null,
   isLoggedIn: false,
-  userInfo: { emoji: "", email: "", nickname: "" },
+  userInfo: { id: "", emoji: "", email: "", nickname: "" },
   updateUserInfo: { emoji: "", email: "", nickname: "" },
   loginHandler: () => {},
   logoutHandler: () => {},

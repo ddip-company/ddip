@@ -1,0 +1,30 @@
+.LocationWrapper {
+  width: 100%;
+}
+.LocationWrapper > .label-wrapper {
+  margin-bottom: 6px;
+  font-family: "pretendard-600";
+}
+
+.LocationBox {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  font-family: "pretendard-400";
+  gap: 10px;
+}
+.LocationBox > .location-display-box {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0px 14px;
+}
+.LocationBox > .location-display-box > p {
+  color: #8a8a8a;
+}
+.LocationBox > .location-display-box > p.active {
+  color: #8a8a8a;
+}/*# sourceMappingURL=MeetingLocation.css.map */

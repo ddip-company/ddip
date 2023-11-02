@@ -29,4 +29,10 @@
   margin-bottom: 22px;
   font-family: "pretendard-400";
   color: #ff5934;
+}
+
+.verification-p {
+  color: red;
+  font-size: small;
+  text-align: center;
 }/*# sourceMappingURL=VerificationPage.css.map */

@@ -1,0 +1,61 @@
+.guide-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  gap: 40px;
+  margin-top: 250px;
+}
+
+.guide-title {
+  font-size: 2.75rem;
+  transform: skewX(-30deg);
+  color: #576cbc;
+  font-family: "pretendard-900";
+  margin-bottom: 20px;
+}
+
+.guide-contents {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "pretendard-400";
+  font-size: 1.125rem;
+  color: #8a8a8a;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #556bbb;
+  width: 100%;
+  font-size: 1.125rem;
+  color: #0b2447;
+  gap: 10px;
+  font-family: "Pretendard-300";
+  margin-top: 130px;
+}
+
+.footer-title {
+  margin-top: 50px;
+  color: #0b2447;
+  font-size: 1.5rem;
+  font-family: "Pretendard-600";
+}
+
+.gitLink {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.gitLink:hover {
+  color: #ffae34;
+}
+
+.member {
+  margin-bottom: 50px;
+}/*# sourceMappingURL=GuidePage.css.map */

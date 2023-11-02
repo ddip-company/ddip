@@ -26,6 +26,7 @@
 
 .mypage-label {
   font-family: "pretendard-300";
+  margin-bottom: 10px;
 }
 
 .mypage-form {
@@ -47,7 +48,7 @@
   align-items: center;
 }
 
-.mypage-Wrapper {
+.mypage-wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;

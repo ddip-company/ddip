@@ -1,0 +1,170 @@
+@use "../base/common";
+$position: 0 0;
+
+.create-container {
+  @extend %auth-container;
+}
+
+.dropdown-container {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.pickerContainer {
+  width: 100%;
+  font-family: "pretendard-400";
+  position: relative;
+}
+
+.pickerLabel {
+  font-family: "pretendard-600";
+  margin-bottom: 6px;
+}
+
+.datePicker {
+  width: 100%;
+  height: 46px;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: start;
+  color: common.$gray;
+  margin-right: 300px;
+  padding-left: 13px;
+  cursor: pointer;
+}
+
+.margin-wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.narrow-margin-wrapper {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.button-container {
+  align-self: flex-end;
+  display: flex;
+  gap: 10px;
+}
+
+.map-container {
+  position: relative;
+  display: flex;
+  width: 1000px;
+  height: 600px;
+}
+
+.map-searchContainer {
+  position: absolute;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  top: calc(0% - 20px);
+  left: calc(60% + 18px);
+  height: calc(100% + 20px);
+  width: 100%;
+  max-width: 350px;
+  background: white;
+  z-index: 30;
+}
+
+.map-searchForm {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  border-radius: 5px;
+  background: white;
+}
+
+.map-search-list {
+  margin: 8px 0px;
+  overflow-y: auto;
+  height: calc(100% - 20px - 42px - 20px); // - 패딩 - 검색창 - 페이지네이션
+  background: white;
+}
+
+.SearchListItem {
+  border-radius: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  &:hover,
+  &:active {
+    background: common.$yellow;
+  }
+}
+
+.MarkerAndPlaceContainer {
+  display: flex;
+  cursor: default;
+}
+
+.Marker {
+  width: 36px;
+  height: 37px;
+  margin: 6px 0 4px 6px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+    no-repeat;
+
+  // SCSS 변수를 사용하여 background-position을 설정
+  background-position: $position;
+}
+
+.PlaceInfoContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  > .place-name {
+    font-family: "Pretendard-300";
+  }
+  > .place-address {
+    font-family: "Pretendard-300";
+  }
+}
+
+.OverlayContent {
+  background: white;
+  color: common.$darkblue;
+  font-family: "Pretendard-600";
+  padding: 12px;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.OverlayTail {
+  position: relative;
+  width: fit-content;
+  border: 10px solid white;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  left: calc(50% - 10px);
+}
+
+.MapSearchPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  margin-left: 22px;
+}
+
+.PageNumber {
+  padding: 2px;
+  margin-right: 2px;
+  margin-left: 2px;
+  cursor: pointer;
+
+  &[current] {
+    color: common.$blue;
+    font-family: "Pretendard-300";
+  }
+}

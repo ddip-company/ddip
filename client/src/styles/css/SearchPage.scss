@@ -4,16 +4,22 @@
   margin: 130px 150px 0 150px;
 }
 
-.search-Wrapper {
+.search-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
 }
 
-.Search-head {
+.search-head {
   font-family: "pretendard-900";
   color: common.$blue;
   font-size: common.$xll;
   margin-bottom: 10px;
+}
+
+.search-error {
+  color: common.$lightblue;
+  font-family: "pretendard-600";
+  font-size: common.$xll;
 }

@@ -1,4 +1,4 @@
-import Button from "../component/Button";
+import Button from "./UI/Button";
 
 function ModifyEmoji({ emoji, onRandomClick, onEmojiChangeClick }) {
   return (

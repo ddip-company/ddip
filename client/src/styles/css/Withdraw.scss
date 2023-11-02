@@ -11,11 +11,3 @@
 .withdraw-title {
   @extend %auth-title;
 }
-
-.withdraw-label {
-  @extend %auth-label;
-}
-
-.withdraw-errors {
-  @extend %auth-errors;
-}

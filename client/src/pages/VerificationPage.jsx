@@ -4,7 +4,7 @@ import { emailFormSchema } from "../util/authValidation";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as authApi from "../api/auth";
 import "../styles/css/Input.css";
-import Button from "../component/Button";
+import Button from "../component/UI/Button";
 import "../styles/css/VerificationPage.css";
 
 function VerificationPage() {
@@ -28,7 +28,6 @@ function VerificationPage() {
         window.alert("회원가입이 완료되었습니다.");
         navigate("/login");
       }
-      console.log(res);
     } catch (error) {
       window.alert("인증번호가 올바르지 않습니다.");
       console.log(error);
@@ -38,6 +37,9 @@ function VerificationPage() {
     <section className="verification-container">
       <form className="verification-form">
         <h1 className="verification-title">E-mail 인증</h1>
+        <p className="verification-p">
+          이메일이 인증되어야 회원가입이 완료됩니다.
+        </p>
         <input
           className="authInput"
           name="authNumber"

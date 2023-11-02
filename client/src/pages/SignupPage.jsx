@@ -7,8 +7,8 @@ import * as authApi from "../api/auth";
 import { emojiList } from "../static/dummy/emojiList";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
 import "../styles/css/SignupPage.css";
-import Button from "../component/Button";
-import Input from "../component/Input";
+import Button from "../component/UI/Button";
+import Input from "../component/UI/Input";
 
 const getRandomEmoji = () => {
   const randomIndex = Math.floor(Math.random() * emojiList.length);

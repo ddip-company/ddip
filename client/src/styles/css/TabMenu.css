@@ -9,11 +9,15 @@
   display: flex;
 }
 
+.tab-menu:hover {
+  color: #ff5934;
+}
+
 .tab-li.active {
   color: #ff5934;
 }
 
-.tab-Wrapper {
+.tab-wrapper {
   display: flex;
 }
 

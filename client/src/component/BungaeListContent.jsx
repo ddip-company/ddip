@@ -23,7 +23,12 @@ const BungaeListContent = ({ bungaeList }) => {
           numberOfParticipants,
           numberOfRecruits
         } = item;
-        const status = cardFunction.getBungaeStatus(createdAt, meetingAt);
+        const status = cardFunction.getBungaeStatus(
+          createdAt,
+          meetingAt,
+          numberOfParticipants,
+          numberOfRecruits
+        );
         const place = location.city + " " + location.state;
         const time = cardFunction.formatDate(meetingAt);
 
