@@ -10,12 +10,15 @@
   font-family: "Pretendard-600";
   display: flex;
 }
+.tab-menu:hover {
+  color: common.$orange;
+}
 
 .tab-li.active {
   color: common.$orange;
 }
 
-.tab-Wrapper {
+.tab-wrapper {
   display: flex;
 }
 

@@ -1,0 +1,71 @@
+@use "../base/common";
+
+.dropdown {
+  width: 100%;
+  font-family: "pretendard-400";
+  position: relative;
+
+  .label-wrapper {
+    margin-bottom: 6px;
+    font-family: "pretendard-600";
+  }
+
+  .dropdown-wrapper {
+    width: 100%;
+  }
+
+  .display-box {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &.open {
+      border: 2px solid common.$orange;
+    }
+
+    p {
+      padding: 0 14px;
+      color: common.$gray;
+
+      &.has-value {
+        padding: 0 13px;
+      }
+    }
+
+    .image-wrapper {
+      width: 40px;
+      height: 32px;
+      padding: 6px 14px;
+      border-left: 1px solid black;
+
+      &.open {
+        width: 39px;
+      }
+    }
+  }
+
+  .option-list {
+    margin-top: 6px;
+    max-height: 182px;
+    overflow-y: scroll;
+    border: 1px solid common.$gray; /* Define $gray2 variable */
+    border-radius: 5px;
+    background: common.$sky; /* Define $white variable */
+
+    li {
+      padding: 10px 14px;
+
+      &:hover {
+        background: common.$gray; /* Define $gray1 variable */
+      }
+
+      &.active {
+        background: common.$lightblue; /* Define $main-mauve variable */
+      }
+    }
+  }
+}

@@ -5,6 +5,13 @@ const padZero = (number) => {
   return String(number).padStart(2, "0");
 };
 
+export const getMeetingDate = (meetingAt) => {
+  const meetingDate = new Date(meetingAt);
+  const month = padZero(meetingDate.getMonth() + 1);
+  const day = padZero(meetingDate.getDate());
+  return `${month}월${day}일`;
+};
+
 export const getMeetingTime = (meetingAt) => {
   const meetingDate = new Date(meetingAt);
   const hours = padZero(meetingDate.getHours());
@@ -50,11 +57,19 @@ const getDuration = (dateString) => {
   return duration;
 };
 
-export const getBungaeStatus = (createdAt, meetingAt) => {
+export const getBungaeStatus = (
+  createdAt,
+  meetingAt,
+  numberOfParticipants,
+  numberOfRecruits
+) => {
   const durationForCreatedAt = getDuration(createdAt);
   const durationForMeetingAt = getDuration(meetingAt);
   const anHourToMs = 3600000;
 
+  if (numberOfParticipants >= numberOfRecruits) {
+    return bungaeStatus.closed; // 모집완료
+  }
   if (durationForMeetingAt <= 0) {
     return bungaeStatus.closed; // 모집완료
   }
@@ -67,7 +82,11 @@ export const getBungaeStatus = (createdAt, meetingAt) => {
 };
 
 export const getMeetingLocation = (location) => {
-  return `${location.city} ${location.state} ${location.street} ${location.zipCode} ${location.detail}`;
+  if (location && location.city) {
+    return `${location.city} ${location.state} ${location.street} ${location.zipCode} ${location.detail}`;
+  } else {
+    return "Unknown Location";
+  }
 };
 
 export const getInitialBungaeState = (bungaeDetail) => {
@@ -75,7 +94,7 @@ export const getInitialBungaeState = (bungaeDetail) => {
   let initialMeetingTime = { name: "00:30 ~ 23:30", value: null };
   let initialMeetingLocation = null;
   let initialOpenChat = "";
-  let initialIntroduction = { title: "", description: "" };
+  let initialIntroduction = { title: "", description: "", detail: "" };
 
   if (bungaeDetail) {
     const {
@@ -84,7 +103,8 @@ export const getInitialBungaeState = (bungaeDetail) => {
       location,
       openChat,
       title,
-      description
+      description,
+      detail
     } = bungaeDetail;
 
     initialNumberOfRecruits = numberOptionList.find(
@@ -97,7 +117,8 @@ export const getInitialBungaeState = (bungaeDetail) => {
     initialOpenChat = openChat;
     initialIntroduction = {
       title: title,
-      description: description
+      description: description,
+      detail: detail
     };
   }
 

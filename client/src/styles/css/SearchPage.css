@@ -2,16 +2,22 @@
   margin: 130px 150px 0 150px;
 }
 
-.search-Wrapper {
+.search-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
 }
 
-.Search-head {
+.search-head {
   font-family: "pretendard-900";
   color: #19376d;
   font-size: 2.25rem;
   margin-bottom: 10px;
+}
+
+.search-error {
+  color: #576cbc;
+  font-family: "pretendard-600";
+  font-size: 2.25rem;
 }/*# sourceMappingURL=SearchPage.css.map */

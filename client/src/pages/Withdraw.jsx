@@ -7,7 +7,8 @@ import { useContext } from "react";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
 import "../styles/css/Withdraw.css";
 import "../styles/css/Input.css";
-import Button from "../component/Button";
+import Button from "../component/UI/Button";
+import Input from "../component/UI/Input";
 
 function Withdraw() {
   const authCtx = useContext(AuthContext);
@@ -41,31 +42,31 @@ function Withdraw() {
       <HeadingPageContent />
 
       <section className="withdraw-container">
-        <form className="withdraw-form">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="withdraw-form"
+        >
           <h1 className="withdraw-title">회원 탈퇴</h1>
-          <label className="withdraw-label" htmlFor="email_id">
-            E-Mail
-          </label>
-          <input
-            className="authInput"
+
+          <Input
+            label="E-Mail"
             name="email"
             id="email_id"
             placeholder="이메일을 입력하세요."
-            {...register("email")}
+            register={register}
+            errors={errors.email}
           />
-          {errors.email && (
-            <p className="withdraw-errors">{errors.email.message}</p>
-          )}
-          <label className="withdraw-label" htmlFor="password_id">
-            Password
-          </label>
-          <input
-            className="authInput"
+
+          <Input
+            label="Password"
             type="password"
             name="password"
             id="password_id"
             placeholder="비밀번호를 입력하세요."
-            {...register("password")}
+            register={register}
+            errors={errors.password}
           />
           <p className="withdraw-errors">
             탈퇴 시 등록된 정보를 복구할 수 없습니다.
@@ -83,6 +84,7 @@ function Withdraw() {
               styles="blue"
               fullWidth="full-width"
               onClick={handleSubmit(onSubmit)}
+              type="submit"
             >
               탈퇴하기
             </Button>

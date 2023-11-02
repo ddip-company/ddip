@@ -1,6 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import "../styles/css/modal.css";
+import "../../styles/css/modal.css";
 
 function Modal({ isOpen, children, onClose }) {
   if (!isOpen) return null;

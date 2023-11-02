@@ -5,6 +5,7 @@ const getAuthTokenDuration = () => {
   const expirationDate = new Date(storedExpirationDate);
   const currentDate = new Date();
   const duration = expirationDate.getTime() - currentDate.getTime();
+
   return duration;
 };
 

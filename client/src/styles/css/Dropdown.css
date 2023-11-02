@@ -1,0 +1,57 @@
+.dropdown {
+  width: 100%;
+  font-family: "pretendard-400";
+  position: relative;
+}
+.dropdown .label-wrapper {
+  margin-bottom: 6px;
+  font-family: "pretendard-600";
+}
+.dropdown .dropdown-wrapper {
+  width: 100%;
+}
+.dropdown .display-box {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dropdown .display-box.open {
+  border: 2px solid #ff5934;
+}
+.dropdown .display-box p {
+  padding: 0 14px;
+  color: #8a8a8a;
+}
+.dropdown .display-box p.has-value {
+  padding: 0 13px;
+}
+.dropdown .display-box .image-wrapper {
+  width: 40px;
+  height: 32px;
+  padding: 6px 14px;
+  border-left: 1px solid black;
+}
+.dropdown .display-box .image-wrapper.open {
+  width: 39px;
+}
+.dropdown .option-list {
+  margin-top: 6px;
+  max-height: 182px;
+  overflow-y: scroll;
+  border: 1px solid #8a8a8a; /* Define $gray2 variable */
+  border-radius: 5px;
+  background: #a5d7e8; /* Define $white variable */
+}
+.dropdown .option-list li {
+  padding: 10px 14px;
+}
+.dropdown .option-list li:hover {
+  background: #8a8a8a; /* Define $gray1 variable */
+}
+.dropdown .option-list li.active {
+  background: #576cbc; /* Define $main-mauve variable */
+}/*# sourceMappingURL=Dropdown.css.map */

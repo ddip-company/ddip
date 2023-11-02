@@ -1,4 +1,4 @@
-import Button from "../component/Button";
+import Button from "../component/UI/Button";
 import { useNavigate } from "react-router-dom";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
 import { useForm } from "react-hook-form";
@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { modifyMyPageFormSchema } from "../util/authValidation";
 import * as authApi from "../api/auth";
 import React, { useEffect, useState } from "react";
-import Input from "../component/Input";
+import Input from "../component/UI/Input";
 import * as authAction from "../util/authAction";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
@@ -18,7 +18,6 @@ function ModifyMyPage() {
   const handleClickRandomEmoji = () => {
     const randomEmoji = authAction.getRandomEmoji();
     setEmoji(randomEmoji);
-    console.log(randomEmoji);
   };
   const navigate = useNavigate();
   const [uniqueNickname, setUniqueNickname] = useState(null);
@@ -26,7 +25,6 @@ function ModifyMyPage() {
   const nicknameCheckMsg = uniqueNickname !== null;
   const {
     register,
-    // handleSubmit,
     watch,
     formState: { errors }
   } = useForm({
@@ -194,6 +192,7 @@ function ModifyMyPage() {
             styles="gray"
             fullWidth="full-width"
             onClick={() => navigate("/withdraw")}
+            type="button"
           >
             회원 탈퇴
           </Button>

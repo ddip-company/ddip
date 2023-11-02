@@ -1,4 +1,4 @@
-import "../styles/css/TabMenu.css";
+import "../../styles/css/TabMenu.css";
 import { useState } from "react";
 
 function TabMenu({ sortBy, onSwitch, tab }) {
@@ -10,7 +10,7 @@ function TabMenu({ sortBy, onSwitch, tab }) {
   };
 
   return (
-    <section className="tab-Wrapper">
+    <section className="tab-wrapper">
       {tab.map((menu) => {
         return (
           <li

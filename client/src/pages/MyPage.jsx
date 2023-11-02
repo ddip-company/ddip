@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/auth-context";
 import { useContext } from "react";
 import { ProfilePageTabMenu as tab } from "../static/sortTab";
-import { dummyBungaeList } from "../static/dummy/bungaeList";
+import * as authApi from "../api/auth";
 import UserInfo from "../component/UserInfo";
 import UserBungaeList from "../component/UserBungaeList";
 import Navbar from "../component/Navbar";
@@ -13,22 +13,35 @@ function Mypage() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [bungaeList, setBungaeList] = useState([]);
-  const authActions = useContext(AuthContext);
+  const [checkUserId, setCheckUserId] = useState();
 
   useEffect(() => {
-    setBungaeList(dummyBungaeList);
-  }, []);
-
-  const handleSubmitLogout = () => {
-    authActions.logoutHandler();
-    return navigate("/");
-  };
+    const fetBungaeList = async () => {
+      try {
+        const res = await authApi.bungaeList();
+        const data = await authApi.nicknameDuplication(userInfo.nickname);
+        const userId = data.data.id;
+        setCheckUserId(userId);
+        setBungaeList(res.data);
+      } catch (error) {
+        console.error("데이터 가져오기 실패:", error);
+      }
+    };
+    fetBungaeList();
+  }, [userInfo.nickname]);
 
   const handleSwitchTab = (selected) => {
     navigate(selected);
   };
 
-  if (!userInfo) return;
+  if (!userInfo) return null;
+
+  const bungaeCreatedByUser = bungaeList.filter(
+    (item) => item.owner.id === checkUserId
+  );
+  const bungaeParticipatedByUser = bungaeList.filter((item) =>
+    item.participantIds.includes(checkUserId)
+  );
 
   return (
     <>
@@ -37,14 +50,17 @@ function Mypage() {
         emoji={userInfo.emoji}
         nickname={userInfo.nickname}
         email={userInfo.email}
-        handleSubmitLogout={handleSubmitLogout}
       />
       <div className="UserBungaeList-container">
         <UserBungaeList
           sortBy={pathname}
           onSwitchTab={handleSwitchTab}
           tab={tab}
-          bungaeList={bungaeList}
+          bungaeList={
+            pathname === "/myPage/created"
+              ? bungaeCreatedByUser
+              : bungaeParticipatedByUser
+          }
         />
       </div>
     </>

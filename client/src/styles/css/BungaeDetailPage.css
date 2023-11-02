@@ -6,7 +6,7 @@
 }
 
 .bungaeDetail-title {
-  font-size: 1.5rem;
+  font-size: 2.25rem;
   font-family: "pretendard-600";
   margin-bottom: 24px;
   line-height: 1.3;
@@ -24,11 +24,13 @@
   align-items: center;
   gap: 16px;
   color: #8a8a8a;
+  font-family: "pretendard-500";
+  font-size: 1.125rem;
 }
 .bungae-owner-date .bungae-owner {
   padding-right: 16px;
   border-right: 2px solid black;
-  color: #19376d;
+  color: #0b2447;
 }
 
 .bungaeDetail-InfoContainer {
@@ -54,7 +56,7 @@
   text-decoration: underline;
 }
 
-.button-Wrapper {
+.button-wrapper {
   align-self: flex-start;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -62,19 +64,36 @@
   text-align: center;
 }
 
-.bungaeDetail-IntroductionContent {
+.bungaeDetail-introductionContent {
   width: 50%;
   margin-top: 40px;
   margin: 0 auto;
 }
-.bungaeDetail-IntroductionContent > .bungae-introduction-title {
+.bungaeDetail-introductionContent > .bungae-introduction-title {
   font-family: "pretendard-600";
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   padding-bottom: 24px;
   border-bottom: 2px solid #8a8a8a;
   margin-bottom: 30px;
 }
-.bungaeDetail-IntroductionContent > .bungae-introduction-description {
+.bungaeDetail-introductionContent > .bungae-introduction-description {
   line-height: 1.3;
   font-size: 1.125rem;
+  font-family: "pretendard-400";
+}
+
+.error-message {
+  color: #ff5934;
+  font-family: "pretendard-600";
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #ff5934;
+  margin-bottom: 10px;
+  font-family: "pretendard-600";
+  font-size: 60px;
 }/*# sourceMappingURL=BungaeDetailPage.css.map */

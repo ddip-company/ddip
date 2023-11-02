@@ -1,8 +1,8 @@
 import "../styles/css/MyPage.css";
-import Button from "./Button";
+import Button from "./UI/Button";
 import { useNavigate } from "react-router-dom";
 
-function UserInfo({ emoji, nickname, email, handleSubmitLogout }) {
+function UserInfo({ emoji, nickname, email }) {
   const navigate = useNavigate();
   return (
     <>

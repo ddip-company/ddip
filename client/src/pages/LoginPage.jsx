@@ -7,7 +7,7 @@ import { loginFormSchema } from "../util/authValidation";
 import HeadingPageContent from "./PageContent/HeadingPageContent";
 import "../styles/css/Input.css";
 import "../styles/css/LoginPage.css";
-import Button from "../component/Button";
+import Button from "../component/UI/Button";
 
 const LoginPage = () => {
   const authCtx = useContext(AuthContext);

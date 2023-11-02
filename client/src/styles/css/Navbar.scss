@@ -18,6 +18,21 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 1000px) {
+  .nav-container {
+    flex-direction: column; /* 세로 정렬로 변경 */
+    height: auto; /* 높이 자동 조정 */
+  }
+
+  .nav-containerLeft {
+    padding: 10px; /* 왼쪽 패딩 조정 */
+  }
+
+  .nav-containerRight {
+    padding: 10px; /* 오른쪽 패딩 조정 */
+  }
+}
+
 @mixin common($props) {
   display: flex;
   align-items: center;
@@ -180,6 +195,9 @@
   margin-left: 50px;
   cursor: pointer;
 }
+.nav-btn-text:hover {
+  color: common.$orange;
+}
 
 .nav-mainbtn-text {
   font-family: "Pretendard-600";
@@ -187,4 +205,7 @@
   margin-left: 50px;
   cursor: pointer;
   color: common.$blue;
+}
+.nav-mainbtn-text:hover {
+  color: common.$yellow;
 }

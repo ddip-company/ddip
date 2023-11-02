@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../store/auth-context";
+import { AuthContext } from "../../store/auth-context";
 import { useContext } from "react";
 
 function LogoutButton() {

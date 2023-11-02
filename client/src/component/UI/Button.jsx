@@ -1,4 +1,4 @@
-import "../styles/css/Button.css";
+import "../../styles/css/Button.css";
 
 const Button = ({
   children,
@@ -8,15 +8,17 @@ const Button = ({
   margin,
   margin2,
   type = "submit",
-  onClick
+  onClick,
+  text,
+  fullHeight
 }) => {
   return (
     <button
-      className={`Button ${styles} ${fullWidth} ${outline} ${margin} ${margin2}`}
+      className={`Button ${styles} ${fullWidth} ${outline} ${margin} ${margin2} ${fullHeight}`}
       type={type}
       onClick={onClick}
     >
-      {children}
+      {text ? text : children}
     </button>
   );
 };

@@ -1,0 +1,35 @@
+.input {
+  width: 100%;
+  height: 42px;
+  padding: 0px 14px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: "pretendard-400";
+}
+.input:focus {
+  outline-color: #ff5934;
+}
+.input.no-radius {
+  border-radius: 0;
+  border-bottom: 0;
+}
+.input.top-radius {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: 0;
+}
+.input.bottom-radius {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.inputText {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: "pretendard-400";
+  resize: none;
+  height: 340px;
+  font-size: 1.125rem;
+}/*# sourceMappingURL=InputWithLabel.css.map */

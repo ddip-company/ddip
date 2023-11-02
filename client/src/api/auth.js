@@ -26,21 +26,60 @@ export const updateUser = (data, token) => {
       Authorization: `Bearer ${token}`
     }
   };
-  console.log(data, config);
   return http.patch("/users", data, config);
 };
-// export const changeNickname = (nickname) => {
-//   return http.patch(`/auth/users?nickname=${nickname}`);
-// };
 
-// export const changePassword = (nickname, password) => {
-//   return http.patch(`/auth/users?nickname=${nickname}`, { password });
-// };
+export const bungaeCreate = (data, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+  return http.post("/meetings", data, config);
+};
 
-// export const changeEmoji = (nickname, emoji) => {
-//   return http.patch(`/auth/users?nickname=${nickname}`, { emoji });
-// };
+export const bungaeList = () => {
+  return http.get("/meetings");
+};
 
-// export const changePassword = (email, password) => {
-//   return http.patch("/auth/password", { email, password });
-// };
+export const bungaeSearch = (searchParams) => {
+  return http.get(
+    `/meetings/search?size=10&page=1&keyword=${searchParams.keyword}&country=${searchParams.country}&city=${searchParams.city}&state=${searchParams.state}&street=${searchParams.street}&zipCode=${searchParams.zipCode}&detail=${searchParams.detail}`
+  );
+};
+
+export const bungaeDelete = (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+  return http.delete(`/meetings/${id}`, config);
+};
+
+export const bungaeUpdate = (id, data, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+  return http.put(`/meetings/${id}`, data, config);
+};
+
+export const participate = (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+  return http.post(`/meetings/${id}/participate`, null, config);
+};
+
+export const leave = (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+  return http.post(`/meetings/${id}/leave`, null, config);
+};
