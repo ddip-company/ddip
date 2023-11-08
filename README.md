@@ -2,6 +2,8 @@
 ![logo](https://github.com/ddip-company/ddip/assets/104331117/4952abc3-78a2-4d0d-b44d-94cf3492c389)
 
 
+
+
 개발 기간: 2023.08 - 11
  
 배포 주소: http://ddip.site/
@@ -25,3 +27,18 @@ ddip은 핵 개인화된 사회의 니즈에 따라 사람들이 부담 없이 �
 ---
 
 ### ⚡️Tech Stack
+![tech stackteck](https://github.com/ddip-company/ddip/assets/104331117/a4290930-f78e-4cbd-93e8-9e89d22904e6)
+
+---
+
+### ⚡️Project Architecture
+![아키택처](https://github.com/ddip-company/ddip/assets/104331117/a8145c43-411b-4bb2-aa34-a5092f693fdf)
+
+---
+
+### ⚡️Documents
+### [API 명세](https://github.com/ddip-company/ddip/wiki/API-%EB%AA%85%EC%84%B8)
+### [User Story](https://github.com/ddip-company/ddip/wiki/User-Story)
+### [이벤트스토밍](https://github.com/ddip-company/ddip/wiki/%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%8A%A4%ED%86%A0%EB%B0%8D)
+### [Figma디자인](https://github.com/ddip-company/ddip/wiki/%08Figma-%E2%80%90-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%B4%88%EA%B8%B0-%EC%8B%9C%EC%95%88)
+### [Convention Rule](https://github.com/ddip-company/ddip/wiki/%08Git-Convention-Type)
