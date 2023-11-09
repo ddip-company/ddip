@@ -7,6 +7,7 @@ import * as authApi from "../api/auth";
 import UserInfo from "../component/UserInfo";
 import UserBungaeList from "../component/UserBungaeList";
 import Navbar from "../component/Navbar";
+import { sortByLatest } from "../util/sortFunctions";
 
 function Mypage() {
   const { userInfo } = useContext(AuthContext);
@@ -36,11 +37,11 @@ function Mypage() {
 
   if (!userInfo) return null;
 
-  const bungaeCreatedByUser = bungaeList.filter(
-    (item) => item.owner.id === checkUserId
+  const bungaeCreatedByUser = sortByLatest(
+    bungaeList.filter((item) => item.owner.id === checkUserId)
   );
-  const bungaeParticipatedByUser = bungaeList.filter((item) =>
-    item.participantIds.includes(checkUserId)
+  const bungaeParticipatedByUser = sortByLatest(
+    bungaeList.filter((item) => item.participantIds.includes(checkUserId))
   );
 
   return (
