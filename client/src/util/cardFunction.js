@@ -103,8 +103,7 @@ export const getInitialBungaeState = (bungaeDetail) => {
       location,
       openChat,
       title,
-      description,
-      detail
+      description
     } = bungaeDetail;
 
     initialNumberOfRecruits = numberOptionList.find(
@@ -118,7 +117,7 @@ export const getInitialBungaeState = (bungaeDetail) => {
     initialIntroduction = {
       title: title,
       description: description,
-      detail: detail
+      detail: location.detail
     };
   }
 
