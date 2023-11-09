@@ -36,6 +36,16 @@ function BungaeDetail({ bungaeDetail, isParticipating }) {
   const token = localStorage.getItem("token");
 
   const handleClickDelete = async () => {
+    const currentTime = new Date().getTime();
+    const meetingTime = new Date(meetingAt).getTime();
+    const timeDifference = meetingTime - currentTime;
+    const oneHourInMilliseconds = 60 * 60 * 1000;
+
+    if (timeDifference <= oneHourInMilliseconds && 0 < timeDifference) {
+      alert("모임 시작 1시간 이내에는 삭제할 수 없습니다.");
+      return;
+    }
+
     const confirmation = window.confirm("정말로 삭제하시겠습니까?");
     if (confirmation) {
       try {
