@@ -65,7 +65,7 @@ export const getBungaeStatus = (
 ) => {
   const durationForCreatedAt = getDuration(createdAt);
   const durationForMeetingAt = getDuration(meetingAt);
-  const anHourToMs = 3600000;
+  const anHourToMs = 6 * 3600000;
 
   if (numberOfParticipants >= numberOfRecruits) {
     return bungaeStatus.closed; // 모집완료
