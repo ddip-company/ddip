@@ -112,6 +112,7 @@ function BungaeCreate({ bungaeDetail, isEditModeProp }) {
       }
     } catch (error) {
       console.error("API 요청 실패:", error);
+      alert("입력 창을 모두 작성해야 등록 할 수 있습니다.");
     }
   };
 

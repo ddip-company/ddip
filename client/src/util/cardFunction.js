@@ -63,9 +63,9 @@ export const getBungaeStatus = (
   numberOfParticipants,
   numberOfRecruits
 ) => {
-  const durationForCreatedAt = getDuration(createdAt);
+  const durationForCreatedAt = getDuration(createdAt) + 9 * 60 * 60000; //라이브러리 사용하지않고 한국 표준시로 변환
   const durationForMeetingAt = getDuration(meetingAt);
-  const anHourToMs = 6 * 3600000;
+  const anHourToMs = 3 * 3600000;
 
   if (numberOfParticipants >= numberOfRecruits) {
     return bungaeStatus.closed; // 모집완료
@@ -73,10 +73,10 @@ export const getBungaeStatus = (
   if (durationForMeetingAt <= 0) {
     return bungaeStatus.closed; // 모집완료
   }
-  if (Math.abs(durationForCreatedAt) < anHourToMs) {
-    return bungaeStatus.new; // NEW
-  } else if (durationForMeetingAt < anHourToMs) {
+  if (durationForMeetingAt < anHourToMs) {
     return bungaeStatus.imminent; // 마감임박
+  } else if (Math.abs(durationForCreatedAt) < anHourToMs) {
+    return bungaeStatus.new; // NEW
   }
   return bungaeStatus.recruiting; // 모집중
 };
