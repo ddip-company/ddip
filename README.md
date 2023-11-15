@@ -22,7 +22,7 @@ ddip은 핵 개인화된 사회의 니즈에 따라 사람들이 부담 없이 �
 ### ⚡️Members
 |안태건 (FE)|백엔드 (BE)|
 |-------------|-------------|
-|https://github.com/TAETAEMO|https://github.com/ddip-company|
+|https://github.com/TAETAEMO|https://github.com/soob-forest|
 
 ---
 
