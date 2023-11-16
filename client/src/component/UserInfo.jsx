@@ -13,7 +13,7 @@ function UserInfo({ emoji, nickname, email }) {
           <p className="mypage-label">{nickname}</p>
           <p className="mypage-label">{email}</p>
           <Button
-            onClick={() => navigate("/mypage/:nickname/modify")}
+            onClick={() => navigate(`/mypage/${nickname}/modify`)}
             margin2="margin2"
             styles="lightblue"
           >
