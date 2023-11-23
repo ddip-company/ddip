@@ -37,4 +37,4 @@ jobs:
             --region ap-northeast-2 \
             build s3://ddip.site \
             --delete
-        working-directory: ./my-agora-states-client
+        working-directory: ./client
