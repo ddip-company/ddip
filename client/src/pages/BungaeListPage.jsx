@@ -18,12 +18,22 @@ function BungaeListPage() {
         const res = await authApi.bungaeList();
         let sortedList = [];
 
-        if (sort === "newest") {
-          sortedList = sortByLatest(res.data);
-        } else if (sort === "last-minute") {
-          sortedList = sortByDeadline(res.data);
-        } else {
-          sortedList = res.data;
+        // if (sort === "newest") {
+        //   sortedList = sortByLatest(res.data);
+        // } else if (sort === "last-minute") {
+        //   sortedList = sortByDeadline(res.data);
+        // } else {
+        //   sortedList = res.data;
+        // }
+        switch (sort) {
+          case "newest":
+            sortedList = sortByLatest(res.data);
+            break;
+          case "last-minute":
+            sortedList = sortByDeadline(res.data);
+            break;
+          default:
+            sortedList = res.data;
         }
 
         setBungaeList(sortedList);
