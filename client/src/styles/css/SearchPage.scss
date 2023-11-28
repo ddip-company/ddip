@@ -23,3 +23,26 @@
   font-family: "pretendard-600";
   font-size: common.$xll;
 }
+
+@media (max-width: 950px) {
+  .search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .search-head {
+    font-family: "pretendard-900";
+    color: common.$blue;
+    font-size: common.$xl;
+    margin-bottom: 10px;
+  }
+
+  .search-error {
+    color: common.$lightblue;
+    font-family: "pretendard-600";
+    font-size: common.$base;
+  }
+}

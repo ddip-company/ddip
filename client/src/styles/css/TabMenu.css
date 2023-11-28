@@ -24,4 +24,13 @@
 .srcImg {
   margin-left: 15px;
   height: 15px;
+}
+
+@media (max-width: 950px) {
+  .tab-menu {
+    padding: 0.5rem;
+    font-family: "Pretendard-600";
+    display: flex;
+    font-size: 0.875rem;
+  }
 }/*# sourceMappingURL=TabMenu.css.map */

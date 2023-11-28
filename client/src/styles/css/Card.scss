@@ -137,3 +137,14 @@
   font-family: "pretendard-600";
   color: common.$gray;
 }
+
+@media (max-width: 950px) {
+  .card-div {
+    transform: scale(0.6);
+    transform-origin: top left;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 50px;
+  }
+}
