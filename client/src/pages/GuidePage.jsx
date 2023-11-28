@@ -47,7 +47,7 @@ const GuidePage = () => {
           </p>
           <p className="guide-text">
             {" "}
-            번개를 만들 때 개인정보는 포함하지 말아주세요.
+            번개를 만들 때 개인정보를 포함하는 문구는 지양해주세요.
           </p>
           <p className="guide-text">
             회원 탈퇴를 하면 참석한 정보나 만들었던 번개 정보는 모두 사라집니다.
