@@ -3,7 +3,7 @@ export const searchPageTabMenu = [
     name: "최신순",
     sortBy: [null, "newest"],
     linkTo: "newest",
-    imageSrc: "/img/line.png",
+    imageSrc: "/img/Line.png",
     imageAlt: "line img"
   },
   {
@@ -18,7 +18,7 @@ export const ProfilePageTabMenu = [
     name: "내가 만든 번개",
     sortBy: ["/myPage", "/myPage/created"],
     linkTo: "/myPage/created",
-    imageSrc: "/img/line.png",
+    imageSrc: "/img/Line.png",
     imageAlt: "line img"
   },
   {
