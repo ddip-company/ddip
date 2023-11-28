@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main-container {
   margin: 130px 150px 0 150px;
 }
@@ -25,4 +26,56 @@
   width: 60px;
   height: 60px;
   cursor: pointer;
+}
+
+@media (max-width: 1481px) {
+  .main-title {
+    font-family: "pretendard-900";
+    color: #19376d;
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+  }
+  .main-body {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  .main-text {
+    font-family: "pretendard-600";
+    color: #19376d;
+    font-size: 3.75rem;
+  }
+  .arrowImg {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+}
+/* 화면이 950px 이하일 때 적용되는 스타일 */
+@media (max-width: 950px) {
+  .main-title {
+    font-family: "pretendard-900";
+    color: #19376d;
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .main-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-direction: column;
+  }
+  .main-text {
+    font-family: "pretendard-600";
+    color: #19376d;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .arrowImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 }/*# sourceMappingURL=MainPage.css.map */

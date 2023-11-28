@@ -45,7 +45,7 @@ function SearchPage() {
           <div className="search-wrapper">
             {bungaeList.length === 0 ? (
               <h1 className="search-error">
-                찾는 번개가 없습니다. 다른 키워드를 입력하세요! test
+                찾는 번개가 없습니다. 다른 키워드를 입력하세요!
               </h1>
             ) : (
               <h1 className="search-head">{`번개 검색 결과 (${bungaeList.length})`}</h1>

@@ -20,4 +20,25 @@
   color: #576cbc;
   font-family: "pretendard-600";
   font-size: 2.25rem;
+}
+
+@media (max-width: 950px) {
+  .search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .search-head {
+    font-family: "pretendard-900";
+    color: #19376d;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .search-error {
+    color: #576cbc;
+    font-family: "pretendard-600";
+    font-size: 1rem;
+  }
 }/*# sourceMappingURL=SearchPage.css.map */
