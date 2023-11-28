@@ -9,7 +9,7 @@ const GuidePage = () => {
         <h1 className="guide-title">ddip</h1>
         <div className="guide-contents">
           <p className="guide-text">
-            ddip은 핵 개인화된 사회의 니즈에 따라 사람들이 부담 없이 취미활동을
+            DDip은 핵 개인화된 사회의 니즈에 따라 사람들이 부담 없이 취미활동을
             즐길 수 있도록 돕기 위해 만들었습니다.
           </p>
           <p className="guide-text">
