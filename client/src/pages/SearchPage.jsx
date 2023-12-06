@@ -3,7 +3,6 @@ import Navbar from "../component/Navbar";
 import * as authApi from "../api/auth";
 import BungaeListContent from "../component/BungaeListContent";
 import { useLocation } from "react-router";
-import Footer from "./PageContent/Footer";
 
 function SearchPage() {
   const [bungaeList, setBungaeList] = useState([]);
@@ -54,7 +53,6 @@ function SearchPage() {
           <BungaeListContent bungaeList={bungaeList} />
         </section>
       </div>
-      <Footer />
     </>
   );
 }

@@ -3,7 +3,6 @@
   display: flex;
   justify-content: flex-start;
   gap: 25px;
-  padding-bottom: 50px;
   flex-wrap: wrap;
 }
 
@@ -140,11 +139,10 @@
 
 @media (max-width: 950px) {
   .card-div {
-    transform: scale(0.6);
+    transform: scale(0.8);
     transform-origin: top left;
     display: flex;
     justify-content: center;
     gap: 25px;
-    padding-bottom: 50px;
   }
 }/*# sourceMappingURL=Card.css.map */
